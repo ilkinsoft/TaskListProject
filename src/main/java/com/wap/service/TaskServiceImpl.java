@@ -1,19 +1,16 @@
 package com.wap.service;
 
 import com.wap.model.dao.BaseDao;
+import com.wap.model.dto.TaskDto;
 import com.wap.model.dto.UserDto;
+import com.wap.model.entity.Task;
 import com.wap.model.entity.Userr;
 import com.wap.model.result.Result;
-import com.wap.model.result.ResultData;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.StreamSupport;
 
 //@Service
-public class UserServiceImpl implements IUserrService {
+public class TaskServiceImpl implements ITaskService {
 
-    private BaseDao<Userr, UserDto> userDao;
+    private BaseDao<Task, TaskDto> taskDao;
 
 //    public Student getUserByUserId(long userId){
 //        return StreamSupport.stream(studentRepo.findAll().spliterator(), false)
@@ -21,26 +18,26 @@ public class UserServiceImpl implements IUserrService {
 //    }
 
     @Override
-    public UserDto getUserById(int id) {
-        return userDao.getById(id);
+    public TaskDto getTaskById(int id) {
+        return taskDao.getById(id);
     }
 
     @Override
-    public Result addUser(UserDto userDto) {
-        userDao.save(userDto);
+    public Result addTask(TaskDto taskDto) {
+        taskDao.save(taskDto);
         return new Result().makeSuccess();
     }
 
     @Override
-    public Result updateUser(UserDto u) {
-        userDao.save(u);
+    public Result updateTask(TaskDto u) {
+        taskDao.save(u);
         return new Result().makeSuccess();
     }
 
     @Override
-    public Result deleteUser(int id) {
-        UserDto userDto = userDao.getById(id);
-        userDao.delete(userDto);
+    public Result deleteTask(int id) {
+        TaskDto taskDto = taskDao.getById(id);
+        taskDao.delete(taskDto);
         return new Result().makeSuccess();
     }
 

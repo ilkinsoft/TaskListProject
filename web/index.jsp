@@ -11,6 +11,11 @@
     <title>$Title$</title>
   </head>
   <body>
+
+  <form action="/User" method="post">
+    <button type="submit">Create new User</button>
+  </form>
+
   $END$
   </body>
 </html>
