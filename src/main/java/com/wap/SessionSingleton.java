@@ -1,14 +1,16 @@
 package com.wap;
 
-import com.wap.model.Task;
-import com.wap.model.Team;
-import com.wap.model.Userr;
+import com.wap.model.entity.Task;
+import com.wap.model.entity.Team;
+import com.wap.model.entity.Userr;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class SessionSingleton {
+public class
+
+SessionSingleton {
 
     private static final SessionFactory ourSessionFactory;
     private static Session session;

@@ -1,4 +1,4 @@
-package com.wap.model;
+package com.wap.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,11 +10,9 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
-public class Team {
+public class Team  extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+
 
     private String name;
 
