@@ -72,7 +72,8 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
     }
 
 
-    public TDto getById(int id) {
+    public TDto
+    getById(int id) {
         Session session = SessionSingleton.getSession();
 
         TDto dto = null;
