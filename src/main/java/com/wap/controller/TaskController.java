@@ -4,6 +4,7 @@ import com.wap.model.dto.TaskDto;
 import com.wap.model.entity.Userr;
 import com.wap.model.enums.Priority;
 import com.wap.service.ITaskService;
+import com.wap.service.TaskServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 @WebServlet("/Task")
 public class TaskController extends HttpServlet {
 
-    private ITaskService taskService;
+    private ITaskService taskService = new TaskServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

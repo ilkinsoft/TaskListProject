@@ -1,5 +1,6 @@
 package com.wap.model.dto;
 
+import com.wap.model.entity.Task;
 import com.wap.model.entity.Userr;
 import com.wap.model.enums.Priority;
 import lombok.Getter;
@@ -12,7 +13,12 @@ import java.time.LocalDate;
 @Setter
 public class TaskDto extends BaseDto {
 
+    public TaskDto(){
 
+        super.typeTdto=TaskDto.class;
+        super.typeTEntoty= Task.class;
+
+    }
 
     private String textOfTask;
     private boolean isDone;

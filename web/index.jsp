@@ -12,7 +12,7 @@
   </head>
   <body>
 
-  <form action="User" method="post">
+  <form action="Task" method="post">
     <button type="submit">Click</button>
   </form>
 

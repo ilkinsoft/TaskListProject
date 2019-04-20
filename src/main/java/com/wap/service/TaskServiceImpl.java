@@ -1,16 +1,13 @@
 package com.wap.service;
 
-import com.wap.model.dao.BaseDao;
+import com.wap.model.dao.TaskDao;
 import com.wap.model.dto.TaskDto;
-import com.wap.model.dto.UserDto;
-import com.wap.model.entity.Task;
-import com.wap.model.entity.Userr;
 import com.wap.model.result.Result;
 
 //@Service
 public class TaskServiceImpl implements ITaskService {
 
-    private BaseDao<Task, TaskDto> taskDao;
+    private TaskDao taskDao = new TaskDao();
 
 //    public Student getUserByUserId(long userId){
 //        return StreamSupport.stream(studentRepo.findAll().spliterator(), false)
