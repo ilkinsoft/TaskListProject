@@ -18,10 +18,10 @@ public class Task extends BaseEntity {
     private String textOfTask;
     private boolean isDone;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Userr createdBy;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Userr assignedTo;
 
     private LocalDate createdAt;

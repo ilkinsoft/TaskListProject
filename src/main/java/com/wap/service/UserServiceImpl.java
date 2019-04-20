@@ -1,6 +1,7 @@
 package com.wap.service;
 
 import com.wap.model.dao.BaseDao;
+import com.wap.model.dao.UserDao;
 import com.wap.model.dto.UserDto;
 import com.wap.model.entity.Userr;
 import com.wap.model.result.Result;
@@ -13,12 +14,13 @@ import java.util.stream.StreamSupport;
 //@Service
 public class UserServiceImpl implements IUserrService {
 
-    private BaseDao<Userr, UserDto> userDao;
+    private UserDao userDao = new UserDao();
 
 //    public Student getUserByUserId(long userId){
 //        return StreamSupport.stream(studentRepo.findAll().spliterator(), false)
 //                .filter(f -> f.getUser().getId() == userId).findFirst().get();
 //    }
+
 
     @Override
     public UserDto getUserById(int id) {
