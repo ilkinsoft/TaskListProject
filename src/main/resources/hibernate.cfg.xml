@@ -17,9 +17,9 @@
 
         <!-- List of XML mapping files -->
         <mapping package="com.wap.model"/>
-        <mapping class="com.wap.model.Userr"/>
-        <mapping class="com.wap.model.Task"/>
-        <mapping class="com.wap.model.Team"/>
+        <mapping class="com.wap.model.entity.Userr"/>
+        <mapping class="com.wap.model.entity.Task"/>
+        <mapping class="com.wap.model.entity.Team"/>
 
 
 

@@ -1,4 +1,4 @@
-package com.wap.model;
+package com.wap.model.entity;
 
 import com.wap.model.enums.Role;
 import lombok.Getter;
@@ -9,11 +9,9 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Userr {
+public class Userr extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+
     private String username;
     private String firstName;
     private String lastName;

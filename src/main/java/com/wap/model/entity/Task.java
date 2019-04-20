@@ -1,4 +1,4 @@
-package com.wap.model;
+package com.wap.model.entity;
 
 import com.wap.model.enums.Priority;
 import lombok.Getter;
@@ -10,12 +10,10 @@ import java.time.LocalDate;
 @Entity
 @Setter
 @Getter
-public class Task {
+public class Task extends BaseEntity {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+
 
     private String textOfTask;
     private boolean isDone;
