@@ -13,14 +13,12 @@
             <li class="nav-item adminsPlace facultysPlace studentsPlace">
                 <a class="nav-link" href="tasks.jsp">Tasks<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item adminsPlace facultysPlace studentsPlace">
-                <a class="nav-link" href="addtask.jsp">Add Task<span class="sr-only">(current)</span></a>
+
+            <li class="nav-item adminsPlace">
+                <a class="nav-link" href="addteam.jsp">Teams</a>
             </li>
             <li class="nav-item adminsPlace">
-                <a class="nav-link" href="addteam.jsp">Add Team</a>
-            </li>
-            <li class="nav-item adminsPlace">
-                <a class="nav-link" href="adduser.jsp">Add User</a>
+                <a class="nav-link" href="users.jsp">Users</a>
             </li>
         </ul>
     </div>

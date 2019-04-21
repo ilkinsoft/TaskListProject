@@ -1,8 +1,10 @@
 package com.wap.controller;
 
+import com.google.gson.Gson;
 import com.wap.model.dto.UserDto;
 import com.wap.model.entity.Team;
 import com.wap.model.enums.Role;
+import com.wap.model.result.Result;
 import com.wap.service.ITeamService;
 import com.wap.service.IUserrService;
 import com.wap.service.TeamServiceImpl;
@@ -14,12 +16,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/AddUser")
 public class AddUserController extends HttpServlet {
 
     private IUserrService userService = new UserServiceImpl();
     private ITeamService teamService = new TeamServiceImpl();
+    private Gson gson= new Gson();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +40,6 @@ public class AddUserController extends HttpServlet {
 
 
         //todo get team by name
-        //todo check 2 passwords
 
 
         UserDto userDto = new UserDto();
@@ -47,9 +50,17 @@ public class AddUserController extends HttpServlet {
         userDto.setPassword(password);
         userDto.setRole(role);
 
-        userService.addUser(userDto);
+        Result result= userService.addUser(userDto);
 
-        request.getRequestDispatcher("adduser.jsp").forward(request, response);
+
+
+        String f =gson.toJson(result);
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.println(f);
+        out.flush();
     }
 }
 

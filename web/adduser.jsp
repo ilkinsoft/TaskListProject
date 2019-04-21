@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="scripts/singUp.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/addUser.js"></script>
 
     <!------ Include the above in your HEAD tag ---------->
 </head>
@@ -30,7 +30,9 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Add User</h5>
-                    <form class="form-signin">
+                    <h6 id="errors"  class="text-center" style="color: red"></h6>
+
+                    <form id="addUserForm" class="form-signin">
 
                         <div class="form-label-group">
                             <input type="text"  name="firstName" id="inputFirstName" class="form-control" placeholder="First Name"
@@ -71,7 +73,7 @@
                         <br>
 
                         <div class="form-label-group">
-                            <select name="role">
+                            <select name="role"  id="role">
                                 <option value="PROJECTMANAGER">Project manager</option>
                                 <option value="DEVELOPER">Developer</option>
                                 <option value="ADMIN">Admin</option>
@@ -83,6 +85,8 @@
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Add User</button>
 
                     </form>
+
+
 
 
                 </div>

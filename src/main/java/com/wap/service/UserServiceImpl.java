@@ -4,6 +4,7 @@ import com.wap.model.dao.BaseDao;
 import com.wap.model.dao.UserDao;
 import com.wap.model.dto.UserDto;
 import com.wap.model.entity.Userr;
+import com.wap.model.enums.ResultCode;
 import com.wap.model.result.Result;
 import com.wap.model.result.ResultData;
 
@@ -24,6 +25,17 @@ public class UserServiceImpl implements IUserrService {
     @Override
     public List<UserDto> getUsers(){
         return userDao.getAll();
+    }
+
+    @Override
+    public ResultData<List<UserDto>> getAllUsers() {
+        ResultData<List<UserDto>> resultData = new ResultData<>();
+
+        resultData.setData(userDao.getAll());
+        resultData.setResultCode(ResultCode.SUCCESS);
+
+
+        return resultData;
     }
 
     @Override

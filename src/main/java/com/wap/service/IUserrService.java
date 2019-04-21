@@ -15,6 +15,7 @@ public interface IUserrService {
     Result addUser(UserDto u);
     Result updateUser(UserDto u);
     Result deleteUser(int id);
+    ResultData<List<UserDto>> getAllUsers();
 
 //    List<TaskDto> getTasks(int userId);
 //    Result assignTask(int userId, int taskId);
