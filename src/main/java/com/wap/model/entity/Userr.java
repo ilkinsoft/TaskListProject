@@ -4,19 +4,19 @@ import com.wap.model.enums.Role;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
 @Setter
-public class Userr extends BaseEntity{
+public class Userr extends BaseEntity {
 
-
-    private String username;
+    private String email;
     private String firstName;
     private String lastName;
     private String password;
-    private String email;
     private String phone;
     private String location;
 

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/AddUser")
-public class UserController extends HttpServlet {
+public class AddUserController extends HttpServlet {
 
     private IUserrService userService = new UserServiceImpl();
     private ITeamService teamService = new TeamServiceImpl();
@@ -25,22 +25,25 @@ public class UserController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        String location = request.getParameter("location");
+        //String location = request.getParameter("location");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
-        int teamId = Integer.parseInt(request.getParameter("teamId"));
-        String username = request.getParameter("username");
+        //int teamId = Integer.parseInt(request.getParameter("teamId"));
         String password = request.getParameter("password");
+        String password2 = request.getParameter("password2");
+
         Role role = Role.valueOf(request.getParameter("role"));
+
+
+        //todo get team by name
+        //todo check 2 passwords
+
 
         UserDto userDto = new UserDto();
         userDto.setFirstName(firstName);
         userDto.setLastName(lastName);
-        userDto.setLocation(location);
         userDto.setEmail(email);
         userDto.setPhone(phone);
-        userDto.setTeam((Team)teamService.getTeamById(teamId).toEntity());
-        userDto.setUsername(username);
         userDto.setPassword(password);
         userDto.setRole(role);
 
