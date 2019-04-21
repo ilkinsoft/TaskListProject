@@ -1,6 +1,7 @@
 package com.wap.service;
 
 import com.wap.model.dao.BaseDao;
+import com.wap.model.dao.TeamDao;
 import com.wap.model.dto.TaskDto;
 import com.wap.model.dto.TeamDto;
 import com.wap.model.entity.Task;
@@ -10,7 +11,7 @@ import com.wap.model.result.Result;
 //@Service
 public class TeamServiceImpl implements ITeamService {
 
-    private BaseDao<Team, TeamDto> teamDao;
+    private TeamDao teamDao = new TeamDao();
 
 //    public Student getUserByUserId(long userId){
 //        return StreamSupport.stream(studentRepo.findAll().spliterator(), false)

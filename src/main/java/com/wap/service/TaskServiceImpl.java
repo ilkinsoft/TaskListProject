@@ -4,6 +4,8 @@ import com.wap.model.dao.TaskDao;
 import com.wap.model.dto.TaskDto;
 import com.wap.model.result.Result;
 
+import java.util.List;
+
 //@Service
 public class TaskServiceImpl implements ITaskService {
 
@@ -13,6 +15,11 @@ public class TaskServiceImpl implements ITaskService {
 //        return StreamSupport.stream(studentRepo.findAll().spliterator(), false)
 //                .filter(f -> f.getUser().getId() == userId).findFirst().get();
 //    }
+
+    @Override
+    public List<TaskDto> getTasks() {
+        return taskDao.getAll();
+    }
 
     @Override
     public TaskDto getTaskById(int id) {

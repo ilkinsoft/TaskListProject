@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> {
 
@@ -14,7 +16,6 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
     protected Class<TDto> typeTDto;
 
     //TEntity objectTEntity;
-
 
     public void save(TDto tDto) {
         Session session = SessionSingleton.getSession();
@@ -42,10 +43,7 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
 
         TEntity tEntity = (TEntity) tDto.toEntity();
         try {
-
-
             session.delete(tEntity);
-
 
             transaction.commit();
         } catch (Exception e) {
@@ -68,7 +66,6 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
         }
 
         session.close();
-
     }
 
 
@@ -91,13 +88,20 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
         TEntity tEntity = session.get(typeTEntity, id);
         TDto tDtoResult = (TDto) dto.toDto(tEntity);
 
-
         session.close();
-
         return tDtoResult;
-
-
     }
 
-
+    @SuppressWarnings("unchecked")
+    public List<TDto> getAll(){
+        Session session = SessionSingleton.getSession();
+        List<TDto> list;
+        try {
+            list = session.createCriteria(typeTEntity).list();
+        } catch (Exception e) {
+            list = new ArrayList<>();
+        }
+        session.close();
+        return list;
+    }
 }

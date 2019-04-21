@@ -8,14 +8,13 @@ public class TaskDao extends BaseDao<Task, TaskDto> {
     public TaskDao() {
         super.typeTDto= TaskDto.class;
         super.typeTEntity= Task.class;
-
     }
 
 
 
-    public void save(TaskDto taskDto) {
-        super.save(taskDto);
-    }
+//    public void save(TaskDto taskDto) {
+//        super.save(taskDto);
+//    }
 
 
 }
