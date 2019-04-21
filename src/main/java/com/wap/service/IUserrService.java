@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IUserrService {
 
-//    List<UserDto> getUsers();
+    List<UserDto> getUsers();
     UserDto getUserById(int id);
     Result addUser(UserDto u);
     Result updateUser(UserDto u);

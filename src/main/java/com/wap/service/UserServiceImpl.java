@@ -21,6 +21,10 @@ public class UserServiceImpl implements IUserrService {
 //                .filter(f -> f.getUser().getId() == userId).findFirst().get();
 //    }
 
+    @Override
+    public List<UserDto> getUsers(){
+        return userDao.getAll();
+    }
 
     @Override
     public UserDto getUserById(int id) {

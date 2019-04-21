@@ -1,6 +1,7 @@
 package com.wap.controller;
 
 import com.wap.model.dto.TaskDto;
+import com.wap.model.dto.UserDto;
 import com.wap.model.entity.Userr;
 import com.wap.model.enums.Priority;
 import com.wap.service.ITaskService;
@@ -22,6 +23,7 @@ import java.util.List;
 public class TaskListController extends HttpServlet {
 
     private ITaskService taskService = new TaskServiceImpl();
+    private IUserrService userService = new UserServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +31,9 @@ public class TaskListController extends HttpServlet {
         List<TaskDto> taskDtos = taskService.getTasks();
         HttpSession session = request.getSession();
         session.setAttribute("taskList", taskDtos);
-        session.setAttribute("tt", "ilkinsoft");
+
+        List<UserDto> userrList = userService.getUsers();
+        session.setAttribute("userList", userrList);
 
 //        request.getRequestDispatcher("tasks.jsp").forward(request, response);
 

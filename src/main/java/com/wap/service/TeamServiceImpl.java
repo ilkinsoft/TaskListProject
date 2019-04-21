@@ -8,6 +8,8 @@ import com.wap.model.entity.Task;
 import com.wap.model.entity.Team;
 import com.wap.model.result.Result;
 
+import java.util.List;
+
 //@Service
 public class TeamServiceImpl implements ITeamService {
 
@@ -17,6 +19,11 @@ public class TeamServiceImpl implements ITeamService {
 //        return StreamSupport.stream(studentRepo.findAll().spliterator(), false)
 //                .filter(f -> f.getUser().getId() == userId).findFirst().get();
 //    }
+
+    @Override
+    public List<TeamDto> getTeams(){
+        return teamDao.getAll();
+    }
 
     @Override
     public TeamDto getTeamById(int id) {

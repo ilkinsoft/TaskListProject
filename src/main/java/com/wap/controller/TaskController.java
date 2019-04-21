@@ -1,9 +1,13 @@
 package com.wap.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.wap.model.dto.TaskDto;
 import com.wap.model.dto.UserDto;
 import com.wap.model.entity.Userr;
 import com.wap.model.enums.Priority;
+import com.wap.model.result.Result;
+import com.wap.model.result.ResultData;
 import com.wap.service.ITaskService;
 import com.wap.service.IUserrService;
 import com.wap.service.TaskServiceImpl;
@@ -14,8 +18,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.List;
 
 @WebServlet("/AddTask")
 public class TaskController extends HttpServlet {
@@ -26,23 +33,6 @@ public class TaskController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//        UserDto user = new UserDto();
-//        user.setEmail("fdsfds");
-//        user.setFirstName("Eren");
-//        user.setLastName("Ozturk");
-        //userService.addUser(user);
-
-
-//        TaskDto taskDto = new TaskDto();
-//        taskDto.setTextOfTask("New Task");
-//        taskDto.setAssignedTo((Userr) user.toEntity());
-//        taskDto.setCreatedAt(LocalDate.now());
-//        taskDto.setCreatedBy((Userr) user.toEntity());
-//        taskDto.setDone(false);
-//        taskDto.setDueDate(LocalDate.now());
-//        taskDto.setPriority(Priority.HIGH);
-//        taskService.addTask(taskDto);
-
         String textOfTask = request.getParameter("textOfTask");
         int assignedTo = Integer.parseInt(request.getParameter("assignedTo"));
         int createdBy = Integer.parseInt(request.getParameter("createdBy"));
@@ -52,7 +42,7 @@ public class TaskController extends HttpServlet {
 
         TaskDto taskDto = new TaskDto();
         taskDto.setTextOfTask(textOfTask);
-        taskDto.setAssignedTo((Userr)userService.getUserById(assignedTo).toEntity());
+        taskDto.setAssignedTo((Userr) userService.getUserById(assignedTo).toEntity());
         taskDto.setCreatedAt(LocalDate.now());
         taskDto.setCreatedBy((Userr) userService.getUserById(createdBy).toEntity());
         taskDto.setDone(isDone);
@@ -60,10 +50,27 @@ public class TaskController extends HttpServlet {
         taskDto.setPriority(priority);
         taskService.addTask(taskDto);
 
+        String responseJSON = new Gson().toJson(new Result().makeSuccess());
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.println(responseJSON);
+        out.flush();
+
 //        String color = request.getParameter("color");
 //        request.setAttribute("result", "");
 
-        request.getRequestDispatcher("addtask.jsp").forward(request, response);
+//        request.getRequestDispatcher("addtask.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        List<UserDto> userrList = userService.getUsers();
+        HttpSession session = request.getSession();
+        session.setAttribute("userList", userrList);
+
     }
 }
 

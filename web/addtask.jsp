@@ -1,3 +1,6 @@
+<%@ page import="com.wap.model.entity.Userr" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,7 +15,10 @@
 </head>
 <body>
 
+<jsp:include page="AddTask"/>
 <%@include file="shared/navbar.jsp" %>
+
+<% List<Userr> userList = (ArrayList<Userr>) session.getAttribute("userList"); %>
 
 <div class="container">
     <form action="AddTask" method="post">
@@ -22,11 +28,29 @@
         </p>
         Assigned to:
         <p>
-            <input type="number" name="assignedTo" placeholder="Assigned to" required>
+            <select name="assignedTo" required>
+                <%
+                    for (int i = 0; i < userList.size(); i++) { %>
+                        <option value="<%= userList.get(i).getId() %>">
+                                <%= userList.get(i).getFirstName() + " " + userList.get(i).getLastName()  %>
+                        </option>
+                <%
+                    }
+                %>
+            </select>
         </p>
         Created by:
         <p>
-            <input type="number" name="createdBy" placeholder="Created by" required>
+            <select name="createdBy" required>
+                <%
+                    for (int i = 0; i < userList.size(); i++) { %>
+                <option value="<%= userList.get(i).getId() %>">
+                    <%= userList.get(i).getFirstName() + " " + userList.get(i).getLastName()  %>
+                </option>
+                <%
+                    }
+                %>
+            </select>
         </p>
         Is completed:
         <p>
