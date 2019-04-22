@@ -26,15 +26,15 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign In</h5>
-                    <form class="form-signin">
+                    <form class="form-signin" >
                         <div class="form-label-group">
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                         </div>
 
                         <br>
 
                         <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <input  name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                         </div>
                         <br>
 

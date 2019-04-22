@@ -5,6 +5,8 @@ import com.wap.model.enums.Role;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 
 @Getter
 @Setter
@@ -25,6 +27,8 @@ public class UserDto extends BaseDto {
     private String email;
     private String phone;
     private String location;
+    private LocalDateTime createdAt;
+
 
     private Role role;
 

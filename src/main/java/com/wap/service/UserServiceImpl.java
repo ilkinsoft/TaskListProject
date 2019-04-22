@@ -39,8 +39,20 @@ public class UserServiceImpl implements IUserrService {
     }
 
     @Override
-    public UserDto getUserById(int id) {
-        return userDao.getById(id);
+    public ResultData<UserDto> getUserById(int id) {
+        ResultData<UserDto> resultData = new ResultData<>();
+        resultData.setData(userDao.getById(id));
+        resultData.setResultCode(ResultCode.SUCCESS);
+        return resultData;
+    }
+
+
+    @Override
+    public ResultData<UserDto> getUserByEmail(String email) {
+        ResultData<UserDto> resultData = new ResultData<>();
+        resultData.setData(userDao.getByEmail(email));
+        resultData.setResultCode(ResultCode.SUCCESS);
+        return resultData;
     }
 
     @Override
@@ -51,7 +63,7 @@ public class UserServiceImpl implements IUserrService {
 
     @Override
     public Result updateUser(UserDto u) {
-        userDao.save(u);
+        userDao.update(u);
         return new Result().makeSuccess();
     }
 

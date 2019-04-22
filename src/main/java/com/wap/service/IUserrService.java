@@ -10,7 +10,10 @@ public interface IUserrService {
 
     List<UserDto> getUsers();
 
-    UserDto getUserById(int id);
+    ResultData<UserDto> getUserById(int id);
+
+    ResultData<UserDto> getUserByEmail(String email);
+
 
     Result addUser(UserDto u);
 
@@ -19,6 +22,8 @@ public interface IUserrService {
     Result deleteUser(int id);
 
     ResultData<List<UserDto>> getAllUsers();
+
+
 
 //    List<TaskDto> getTasks(int userId);
 //    Result assignTask(int userId, int taskId);

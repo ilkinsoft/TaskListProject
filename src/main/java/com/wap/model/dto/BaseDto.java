@@ -9,10 +9,10 @@ import org.modelmapper.ModelMapper;
 public abstract class BaseDto<TEntity, TDto> {
 
 
-    private int id;
+    public int id;
 
-    protected Class<TEntity> typeTEntoty;
-    protected Class<TDto> typeTdto;
+    protected transient  Class<TEntity> typeTEntoty;
+    protected transient  Class<TDto> typeTdto;
 
 
     public TEntity toEntity() {

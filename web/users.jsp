@@ -118,6 +118,18 @@
     </div>
 </div>
 
+<form style="display: none" action="userdetails.jsp" method="POST" id="userDetailsForm">
+    <input type="hidden" id="formUserID" name="userID" value=""/>
+    <input type="hidden" id="formFirstName" name="firstName" value=""/>
+    <input type="hidden" id="formLastName" name="lastName" value=""/>
+    <input type="hidden" id="formEmail" name="email" value=""/>
+    <input type="hidden" id="formPassword" name="password" value=""/>
+    <input type="hidden" id="formPhone" name="phone" value=""/>
+    <input type="hidden" id="formRole" name="role" value="">
+    <input type="hidden" id="isInEditMode" name="isInEditMode" value="1"/>
 
+
+
+</form>
 </body>
 </html>

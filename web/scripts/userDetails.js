@@ -1,6 +1,9 @@
 $(document).ready(function () {
 
 
+isInEditMode=$("#isInEditMode").val();
+
+
 
     $("#addUserForm").on('submit', function (event) {
 
@@ -22,17 +25,49 @@ $(document).ready(function () {
 
 
         if (isSubmit) {
-            sendAddUserAsAjax();
+
+            sendAddOrEditUserAsAjax();
+
         }
 
 
     });
 
+    if ($("#roleHelper").val()!=="") {
+        $("#role").val($("#roleHelper").val());
+    }
+
+    if (isInEditMode==="1") {
+        $("#sendButton").text("Edit User");
+        $("#titleOfForm").text("Edit User");
+
+    }
+
+
+
+/*    $("#roleHelper").change(function () {
+        alert();
+    });
+
+    $("#inputPhone").change(function () {
+        alert();
+    });*/
+
+
 
 });
 
-function sendAddUserAsAjax() {
-    $.post("AddUser", {
+function sendAddOrEditUserAsAjax() {
+    var url;
+
+    if(isInEditMode==="1"){
+        url="EditUser";
+    }else{
+        url="AddUser";
+    }
+
+    $.post(url, {
+        userID:$("#userID").val(),
         firstName: $("#inputFirstName").val(),
         lastName: $("#inputLastName").val(),
         email: $("#inputEmail").val(),

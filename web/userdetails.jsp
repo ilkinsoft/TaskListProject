@@ -24,30 +24,32 @@
 <%@include file="shared/navbar.jsp" %>
 
 
+
+
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Add User</h5>
+                    <h5 id="titleOfForm" class="card-title text-center">Add User</h5>
                     <h6 id="errors"  class="text-center" style="color: red"></h6>
 
                     <form id="addUserForm" class="form-signin">
 
                         <div class="form-label-group">
-                            <input type="text"  name="firstName" id="inputFirstName" class="form-control" placeholder="First Name"
+                            <input value="${param.firstName}" type="text"  name="firstName" id="inputFirstName" class="form-control" placeholder="First Name"
                                    required autofocus>
                         </div>
                         <br>
 
                         <div class="form-label-group">
-                            <input type="text" name="lastName" id="inputLastName" class="form-control" placeholder="Last Name" required>
+                            <input value="${param.lastName}"  type="text" name="lastName" id="inputLastName" class="form-control" placeholder="Last Name" required>
                         </div>
                         <br>
 
 
                         <div class="form-label-group">
-                            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address"
+                            <input value="${param.email}" type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address"
                                    required>
                         </div>
 
@@ -55,25 +57,30 @@
 
 
                         <div class="form-label-group">
-                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
+                            <input value="${param.password}" type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
                                    required>
                         </div>
                         <br>
 
 
                         <div class="form-label-group">
-                            <input type="password" name="password2" id="inputPassword2" class="form-control"
+                            <input value="${param.password}" type="password" name="password2" id="inputPassword2" class="form-control"
                                    placeholder="Repeat Password" required>
                         </div>
                         <br>
 
                         <div class="form-label-group">
-                            <input type="text" id="inputPhone"  name="phone" class="form-control" placeholder="Phone" required>
+                            <input value="${param.phone}" type="text" id="inputPhone"  name="phone" class="form-control" placeholder="Phone" required>
                         </div>
                         <br>
 
+                        <input id="roleHelper" type="hidden" value="${param.role}">
+                        <input id="isInEditMode" type="hidden" value="${param.isInEditMode}">
+                        <input id="userID" type="hidden" value="${param.userID}">
+
+
                         <div class="form-label-group">
-                            <select name="role"  id="role">
+                            <select  name="role"  id="role">
                                 <option value="PROJECTMANAGER">Project manager</option>
                                 <option value="DEVELOPER">Developer</option>
                                 <option value="ADMIN">Admin</option>
@@ -82,7 +89,7 @@
                         <br>
 
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Add User</button>
+                        <button id="sendButton" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" >Add User</button>
 
                     </form>
 

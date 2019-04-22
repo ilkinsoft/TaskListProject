@@ -48,13 +48,13 @@ $(document).ready(function () {
                         "                        </td>\n" +
                         "                        <td style='width: 20%;'>\n" +
 
-                        "                            <a href='userdetails.jsp' class='table-link'>\n" +
+                        "                            <a id='"+value.id+"'  class='table-link editUser'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class='fa-stack'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-square fa-stack-2x'></i>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-pencil fa-stack-1x fa-inverse'></i>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n" +
                         "                            </a>\n" +
-                        "                            <a id='"+value.id+"' href='#' class='table-link danger deleteUser'>\n" +
+                        "                            <a id='"+value.id+"'  class='table-link danger deleteUser'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class='fa-stack'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-square fa-stack-2x'></i>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>\n" +
@@ -67,7 +67,11 @@ $(document).ready(function () {
 
                 $(".deleteUser").click(function () {
                     sendDeleteUserPost(this.id);
-                })
+                });
+
+                $(".editUser").click(function () {
+                    sendGetUserPost(this.id);
+                });
 
 
             }
@@ -83,6 +87,8 @@ $(document).ready(function () {
 
 
 
+
+
     function sendDeleteUserPost(uID){
 
         $.post("DeleteUser", {
@@ -90,6 +96,35 @@ $(document).ready(function () {
         })
             .done(function () {
                 location.reload();
+
+            })
+            .fail(function () {
+
+            })
+
+    }
+
+
+    function sendGetUserPost(uID){
+
+        $.post("GetUser", {
+            userID:uID
+        })
+            .done(function (data) {
+
+                $("#formUserID").val(uID);
+                $("#formFirstName").val(data.data.firstName);
+                $("#formLastName").val(data.data.lastName);
+                $("#formEmail").val(data.data.email);
+                $("#formPassword").val(data.data.password);
+                $("#formPhone").val(data.data.phone);
+                $("#formRole").val(data.data.role);
+
+
+
+                $("#userDetailsForm").submit();
+
+
 
             })
             .fail(function () {

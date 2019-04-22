@@ -2,8 +2,6 @@ package com.wap.controller;
 
 import com.google.gson.Gson;
 import com.wap.model.dto.UserDto;
-import com.wap.model.entity.Team;
-import com.wap.model.enums.Role;
 import com.wap.model.result.Result;
 import com.wap.service.ITeamService;
 import com.wap.service.IUserrService;
@@ -18,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 @WebServlet("/AddUser")
 public class AddUserController extends HttpServlet {
 
@@ -27,14 +26,13 @@ public class AddUserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = request.getParameter("firstName");
+/*        String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         //String location = request.getParameter("location");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         //int teamId = Integer.parseInt(request.getParameter("teamId"));
         String password = request.getParameter("password");
-        String password2 = request.getParameter("password2");
 
         Role role = Role.valueOf(request.getParameter("role"));
 
@@ -48,7 +46,13 @@ public class AddUserController extends HttpServlet {
         userDto.setEmail(email);
         userDto.setPhone(phone);
         userDto.setPassword(password);
-        userDto.setRole(role);
+        userDto.setRole(role);*/
+
+        UserDto userDto = new UserDto();
+
+        MyUtil.mapUserObject(request,userDto);
+
+
 
         Result result= userService.addUser(userDto);
 
