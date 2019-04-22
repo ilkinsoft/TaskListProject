@@ -8,6 +8,13 @@ $(document).ready(function () {
 
                     var hour = value.createdAt.time.hour;
                     var min = value.createdAt.time.minute;
+                    var team;
+
+                    try {
+                        team = value.team.name;
+                    } catch (e) {
+                        console.log(e);
+                    }
 
                     if (hour.length === 1) {
                         hour = "0" + hour;
@@ -34,7 +41,7 @@ $(document).ready(function () {
                         "                           " + value.phone + "\n" +
                         "                        </td>\n" +
                         "                        <td >\n" +
-                        "                            " + value.team.name + "    \n" +
+                        "                            " + team + "    \n" +
                         "                        </td>\n" +
                         "                        <td>\n" +
                         "                            " + value.email + "\n" +
@@ -59,7 +66,7 @@ $(document).ready(function () {
 
 
                 $(".deleteUser").click(function () {
-                    sendDeleteUserPost(this.id)
+                    sendDeleteUserPost(this.id);
                 })
 
 
