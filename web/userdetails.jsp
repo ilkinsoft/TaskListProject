@@ -14,7 +14,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts/addUser.js"></script>
+    <script src="scripts/userDetails.js"></script>
 
     <!------ Include the above in your HEAD tag ---------->
 </head>

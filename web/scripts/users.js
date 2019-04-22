@@ -3,37 +3,51 @@ $(document).ready(function () {
     $.get("users")
         .done(function (data) {
             //alert("done")
-            if(data.resultCode==="SUCCESS"){
-                $.each( data.data, function( key, value ) {
+            if (data.resultCode === "SUCCESS") {
+                $.each(data.data, function (key, value) {
+
+                    var hour = value.createdAt.time.hour;
+                    var min = value.createdAt.time.minute;
+
+                    if (hour.length === 1) {
+                        hour = "0" + hour;
+                    }
+
+                    if (min.length === 1) {
+                        min = "0" + min;
+                    }
+
+                    /*                    var backToDate = new Date(value.createdAt);
+                                        console.log(value.createdAt);
+                                        console.log(backToDate);*/
+
                     $("#listofusers").append("<tr>\n" +
                         "                        <td>\n" +
                         "                            <img src='./img/profile_pic_place_holder.jpg' alt=''>\n" +
-                        "                            <a href='http://superhero.phoonio.com/users.html#' class='user-link'>"+value.firstName+" "+value.lastName+"</a>\n" +
-                        "                            <span class='user-subhead'>"+value.role+"</span>\n" +
+                        "                            <a href='http://superhero.phoonio.com/users.html#' class='user-link'>" + value.firstName + " " + value.lastName + "</a>\n" +
+                        "                            <span class='user-subhead'>" + value.role + "</span>\n" +
                         "                        </td>\n" +
                         "                        <td>\n" +
-                        "                            2013/08/08\n" +
+                        "                            " + value.createdAt.date.month + "-" + value.createdAt.date.day + "-" + value.createdAt.date.year + " " + hour + ":" + min + "    \n" +
                         "                        </td>\n" +
                         "                        <td class='text-center'>\n" +
-                        "                            <span class='label label-default'>Inactive</span>\n" +
+                        "                           " + value.phone + "\n" +
+                        "                        </td>\n" +
+                        "                        <td >\n" +
+                        "                            " + value.team.name + "    \n" +
                         "                        </td>\n" +
                         "                        <td>\n" +
-                        "                            <a href='http://superhero.phoonio.com/users.html#'>"+value.email+"</a>\n" +
+                        "                            " + value.email + "\n" +
                         "                        </td>\n" +
                         "                        <td style='width: 20%;'>\n" +
-                        "                            <a href='http://superhero.phoonio.com/users.html#' class='table-link'>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class='fa-stack'>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-square fa-stack-2x'></i>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n" +
-                        "                            </a>\n" +
-                        "                            <a href='http://superhero.phoonio.com/users.html#' class='table-link'>\n" +
+
+                        "                            <a href='userdetails.jsp' class='table-link'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class='fa-stack'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-square fa-stack-2x'></i>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-pencil fa-stack-1x fa-inverse'></i>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</span>\n" +
                         "                            </a>\n" +
-                        "                            <a href='http://superhero.phoonio.com/users.html#' class='table-link danger'>\n" +
+                        "                            <a id='"+value.id+"' href='#' class='table-link danger deleteUser'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class='fa-stack'>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-square fa-stack-2x'></i>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>\n" +
@@ -44,13 +58,39 @@ $(document).ready(function () {
                 });
 
 
+                $(".deleteUser").click(function () {
+                    sendDeleteUserPost(this.id)
+                })
+
+
             }
 
         })
         .fail(function () {
             alert("Fail. Try Again!")
 
+        });
+
+
+
+
+
+
+    function sendDeleteUserPost(uID){
+
+        $.post("DeleteUser", {
+            userID:uID
         })
+            .done(function () {
+                location.reload();
+
+            })
+            .fail(function () {
+
+            })
+
+    }
+
 
 
 

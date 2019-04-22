@@ -10,19 +10,20 @@
 <head>
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/users.js"></script>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
     <!-- bootstrap -->
     <link href="./css/bootstrap.css" rel="stylesheet">
 
     <!-- libraries -->
-    <link href="./css/font-awesome.css" type="text/css" rel="stylesheet">
+<%--    <link href="./css.css/font-awesome.css.css" type="text/css.css" rel="stylesheet">--%>
 
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="./css/layout.css">
@@ -31,11 +32,12 @@
     <!-- this page specific styles -->
 
     <!-- google font libraries -->
-    <link href="./css/css" rel="stylesheet" type="text/css">
+    <link href="css/css.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Users</title>
 </head>
@@ -48,7 +50,7 @@
 <div class="clearfix">
 
     <div class="pull-right top-page-ui">
-        <a href="adduser.jsp" class="btn btn-primary pull-right">
+        <a href="userdetails.jsp" class="btn btn-primary pull-right">
             <i class="fa fa-plus-circle fa-lg"></i> Add user
         </a>
     </div>
@@ -61,9 +63,12 @@
                     <thead>
                     <tr>
                         <th><span>User</span></th>
-                        <th><span>Created</span></th>
-                        <th class="text-center"><span>Status</span></th>
+                        <th><span>Created At</span></th>
+                        <th class="text-center"><span>Phone</span></th>
+                        <th ><span>Team</span></th>
+
                         <th><span>Email</span></th>
+
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -108,15 +113,7 @@
                     </tbody>
                 </table>
             </div>
-            <ul class="pagination pull-right">
-                <li><a href="http://superhero.phoonio.com/users.html#"><i class="fa fa-chevron-left"></i></a></li>
-                <li><a href="http://superhero.phoonio.com/users.html#">1</a></li>
-                <li><a href="http://superhero.phoonio.com/users.html#">2</a></li>
-                <li><a href="http://superhero.phoonio.com/users.html#">3</a></li>
-                <li><a href="http://superhero.phoonio.com/users.html#">4</a></li>
-                <li><a href="http://superhero.phoonio.com/users.html#">5</a></li>
-                <li><a href="http://superhero.phoonio.com/users.html#"><i class="fa fa-chevron-right"></i></a></li>
-            </ul>
+
         </div>
     </div>
 </div>

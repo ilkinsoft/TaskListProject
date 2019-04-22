@@ -25,7 +25,7 @@ public class Userr extends BaseEntity {
     private String phone;
     private String location;
     @CreationTimestamp
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     @Enumerated
     private Role role;
 

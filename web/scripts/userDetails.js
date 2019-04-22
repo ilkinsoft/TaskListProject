@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 
         if (isSubmit) {
-            sendFormAsAjax();
+            sendAddUserAsAjax();
         }
 
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 });
 
-function sendFormAsAjax() {
+function sendAddUserAsAjax() {
     $.post("AddUser", {
         firstName: $("#inputFirstName").val(),
         lastName: $("#inputLastName").val(),

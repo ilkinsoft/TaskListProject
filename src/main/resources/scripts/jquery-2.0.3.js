@@ -547,7 +547,7 @@ jQuery.extend({
 		}
 	},
 
-	// Convert dashed to camelCase; used by the css and data modules
+	// Convert dashed to camelCase; used by the css.css and data modules
 	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
 		return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
@@ -793,8 +793,8 @@ jQuery.extend({
 	now: Date.now,
 
 	// A method for quickly swapping in/out CSS properties to get correct calculations.
-	// Note: this method belongs to the css module but it's needed here for the support module.
-	// If support gets modularized, this method should be moved back to the css module.
+	// Note: this method belongs to the css.css module but it's needed here for the support module.
+	// If support gets modularized, this method should be moved back to the css.css module.
 	swap: function( elem, options, callback, args ) {
 		var ret, name,
 			old = {};
@@ -6074,7 +6074,7 @@ var curCSS, iframe,
 	cssExpand = [ "Top", "Right", "Bottom", "Left" ],
 	cssPrefixes = [ "Webkit", "O", "Moz", "ms" ];
 
-// return a css property mapped to a potentially vendor prefixed property
+// return a css.css property mapped to a potentially vendor prefixed property
 function vendorPropName( style, name ) {
 
 	// shortcut for names that are not vendor prefixed
@@ -6240,7 +6240,7 @@ jQuery.extend({
 	// Add in properties whose names you wish to fix before
 	// setting or getting the value
 	cssProps: {
-		// normalize float css property
+		// normalize float css.css property
 		"float": "cssFloat"
 	},
 
@@ -6345,7 +6345,7 @@ curCSS = function( elem, name, _computed ) {
 		computed = _computed || getStyles( elem ),
 
 		// Support: IE9
-		// getPropertyValue is only needed for .css('filter') in IE9, see #12537
+		// getPropertyValue is only needed for .css.css('filter') in IE9, see #12537
 		ret = computed ? computed.getPropertyValue( name ) || computed[ name ] : undefined,
 		style = elem.style;
 
@@ -6440,7 +6440,7 @@ function getWidthOrHeight( elem, name, extra ) {
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
 	// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
 	if ( val <= 0 || val == null ) {
-		// Fall back to computed then uncomputed css if necessary
+		// Fall back to computed then uncomputed css.css if necessary
 		val = curCSS( elem, name, styles );
 		if ( val < 0 || val == null ) {
 			val = elem.style[ name ];
@@ -6560,7 +6560,7 @@ jQuery(function() {
 
 	// Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
 	// getComputedStyle returns percent when specified for top/left/bottom/right
-	// rather than make the css module depend on the offset module, we just check for it here
+	// rather than make the css.css module depend on the offset module, we just check for it here
 	if ( !jQuery.support.pixelPosition && jQuery.fn.position ) {
 		jQuery.each( [ "top", "left" ], function( i, prop ) {
 			jQuery.cssHooks[ prop ] = {
@@ -7871,7 +7871,7 @@ var fxNow, timerId,
 				maxIterations = 20;
 
 			if ( start && start[ 3 ] !== unit ) {
-				// Trust units reported by jQuery.css
+				// Trust units reported by jQuery.css.css
 				unit = unit || start[ 3 ];
 
 				// Make sure we update the tween properties later on
@@ -8285,7 +8285,7 @@ Tween.propHooks = {
 				return tween.elem[ tween.prop ];
 			}
 
-			// passing an empty string as a 3rd parameter to .css will automatically
+			// passing an empty string as a 3rd parameter to .css.css will automatically
 			// attempt a parseFloat and fallback to a string if the parse fails
 			// so, simple values such as "10px" are parsed to Float.
 			// complex values such as "rotate(1rad)" are returned as is.
