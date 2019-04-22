@@ -3,10 +3,12 @@ package com.wap.model.entity;
 import com.wap.model.enums.Priority;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -23,9 +25,10 @@ public class Task extends BaseEntity {
     @ManyToOne//(cascade = CascadeType.ALL)
     private Userr assignedTo;
 
-    private LocalDate createdAt;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     private Priority priority;
 

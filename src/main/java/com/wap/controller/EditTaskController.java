@@ -1,13 +1,10 @@
 package com.wap.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.wap.model.dto.TaskDto;
 import com.wap.model.dto.UserDto;
-import com.wap.model.entity.Userr;
 import com.wap.model.enums.Priority;
 import com.wap.model.result.Result;
-import com.wap.model.result.ResultData;
 import com.wap.service.ITaskService;
 import com.wap.service.IUserrService;
 import com.wap.service.TaskServiceImpl;
@@ -23,10 +20,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@WebServlet("/AddTask")
-public class TaskController extends HttpServlet {
+@WebServlet("/EditTask")
+public class EditTaskController extends HttpServlet {
 
     private ITaskService taskService = new TaskServiceImpl();
     private IUserrService userService = new UserServiceImpl();
@@ -34,21 +32,24 @@ public class TaskController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        int id = Integer.parseInt(request.getParameter("id"));
         String textOfTask = request.getParameter("textOfTask");
         int assignedTo = Integer.parseInt(request.getParameter("assignedTo"));
         int createdBy = Integer.parseInt(request.getParameter("createdBy"));
         boolean isDone = Boolean.parseBoolean(request.getParameter("isDone"));
+        LocalDateTime createdAt = LocalDateTime.parse(request.getParameter("createdAt"));
         LocalDateTime dueDate = LocalDateTime.parse(request.getParameter("dueDate"));
         Priority priority = Priority.valueOf(request.getParameter("priority"));
 
-        TaskDto taskDto = new TaskDto();
+        TaskDto taskDto = taskService.getTaskById(id);
         taskDto.setTextOfTask(textOfTask);
         taskDto.setAssignedTo(userService.getUserById(assignedTo));
+        taskDto.setCreatedAt(createdAt);
         taskDto.setCreatedBy(userService.getUserById(createdBy));
         taskDto.setDone(isDone);
         taskDto.setDueDate(dueDate);
         taskDto.setPriority(priority);
-        taskService.addTask(taskDto);
+        taskService.updateTask(taskDto);
 
         String responseJSON = new Gson().toJson(new Result().makeSuccess());
 
@@ -57,20 +58,10 @@ public class TaskController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         out.println(responseJSON);
         out.flush();
-
-//        String color = request.getParameter("color");
-//        request.setAttribute("result", "");
-
-//        request.getRequestDispatcher("addtask.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        List<UserDto> userrList = userService.getUsers();
-        HttpSession session = request.getSession();
-        session.setAttribute("userList", userrList);
-
     }
 }
 

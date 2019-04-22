@@ -39,7 +39,7 @@ public class TaskServiceImpl implements ITaskService {
 
     @Override
     public Result updateTask(TaskDto u) {
-        taskDao.save(u);
+        taskDao.update(u);
         return new Result().makeSuccess();
     }
 

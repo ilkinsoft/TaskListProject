@@ -57,9 +57,12 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
     public void update(TDto tDto) {
         Session session = SessionSingleton.getSession();
         Transaction transaction = session.beginTransaction();
+
+        TEntity tEntity = (TEntity) tDto.toEntity();
+
         try {
 
-            session.update(tDto);
+            session.update(tEntity);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();

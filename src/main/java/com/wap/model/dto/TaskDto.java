@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -27,9 +28,9 @@ public class TaskDto extends BaseDto {
 
     private UserDto assignedTo;
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     private Priority priority;
 

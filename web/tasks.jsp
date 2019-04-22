@@ -14,15 +14,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/tasks.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    <script src="scripts/tasks.js"></script>
 </head>
 <body>
 
@@ -63,15 +54,15 @@
             <div class="form-group col-sm-6">
                 <label for="isDone">Is Done</label>
                 <select class="form-control" id="isDone" name="isDone">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
+                    <option value=false>No</option>
+                    <option value=true>Yes</option>
                 </select>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="dueDate">Deadline</label>
-                <input type="date" class="form-control" id="dueDate" name="dueDate"
+                <input type="datetime-local" class="form-control" id="dueDate" name="dueDate"
                        placeholder="Text of task" required>
             </div>
         </div>
@@ -95,7 +86,73 @@
 
     <button class="btn btn-primary" id="btnAddTask">Add Task</button>
 
+    <%--BOOTSTRAP MODAL--%>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm" action="EditTask" method="post">
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="idEdit" name="idEdit">
+                        </div>
+                        <div class="form-group">
+                            <label for="textOfTaskEdit" class="col-form-label">Text of task:</label>
+                            <input type="text" class="form-control" id="textOfTaskEdit" name="textOfTaskEdit">
+                        </div>
+                        <div class="form-group">
+                            <label for="assignedToEdit" class="col-form-label">Assigned to:</label>
+                            <select class="form-control" id="assignedToEdit" name="assignedToEdit"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="createdByEdit" class="col-form-label">Created by:</label>
+                            <select class="form-control" id="createdByEdit" name="createdByEdit"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="createdAtEdit" class="col-form-label">Created at:</label>
+                            <input type="datetime-local" class="form-control" id="createdAtEdit" name="createdAtEdit">
+                        </div>
+                        <div class="form-group">
+                            <label for="dueDateEdit" class="col-form-label">Deadline:</label>
+                            <input type="datetime-local" class="form-control" id="dueDateEdit" name="dueDateEdit">
+                        </div>
+                        <div class="form-group">
+                            <label for="isDoneEdit" class="col-form-label">Is done:</label>
+                            <%--<input type="text" class="form-control" id="isDoneEdit" name="isDoneEdit">--%>
+                            <select class="form-control" id="isDoneEdit" name="isDoneEdit">
+                                <option value=false>No</option>
+                                <option value=true>Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="priorityEdit" class="col-form-label">Priority:</label>
+                            <select class="form-control" id="priorityEdit" name="priorityEdit">
+                                <option value="LOW">Low</option>
+                                <option value="MEDIUM">Medium</option>
+                                <option value="HIGH">High</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="saveChanges" type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <div id="taskListSection"></div>
+
+
 
     <%--<%--%>
     <%--List<Task> taskList = (ArrayList<Task>) session.getAttribute("taskList");--%>
@@ -136,5 +193,17 @@
     <%--%>--%>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="scripts/tasks.js"></script>
+<script src="scripts/moment.js"></script>
+
 </body>
 </html>
