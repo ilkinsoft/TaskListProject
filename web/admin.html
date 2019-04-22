@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TaskList Project</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" href="admin.css" type="text/css">
+</head>
+<body>
+
+<form>
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="email" placeholder="Email Address">
+    <input type="text" id="tel" placeholder="Tel number">
+    <input type="button" class="add-row" value="Add Row">
+    <input type="submit" id="edit" value="Edit Cell"/>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Select</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Tel</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox" name="record"></td>
+        <td>Peter Parker</td>
+        <td>peterparker@mail.com</td>
+        <td>+447985741923</td>
+    </tr>
+    </tbody>
+</table>
+<button type="button" class="delete-row">Delete Row</button>
+<script type="text/javascript" src="admin.js"></script>
+</body>
+</html>
