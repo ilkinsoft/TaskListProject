@@ -48,7 +48,7 @@
 <div class="clearfix">
 
     <div class="pull-right top-page-ui">
-        <a href="#" class="btn btn-primary pull-right">
+        <a href="adduser.jsp" class="btn btn-primary pull-right">
             <i class="fa fa-plus-circle fa-lg"></i> Add user
         </a>
     </div>
@@ -68,7 +68,7 @@
                     </tr>
                     </thead>
                     <tbody id="listofusers">
-                    <tr>
+                    <%--<tr>
                         <td>
                             <img src='./img/profile_pic_place_holder.jpg' alt=''>
                             <a href='http://superhero.phoonio.com/users.html#' class='user-link'>Mila Kunis</a>
@@ -103,7 +103,7 @@
 															</span>
                             </a>
                         </td>
-                    </tr>
+                    </tr>--%>
 
                     </tbody>
                 </table>

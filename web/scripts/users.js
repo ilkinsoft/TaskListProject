@@ -9,7 +9,7 @@ $(document).ready(function () {
                         "                        <td>\n" +
                         "                            <img src='./img/profile_pic_place_holder.jpg' alt=''>\n" +
                         "                            <a href='http://superhero.phoonio.com/users.html#' class='user-link'>"+value.firstName+" "+value.lastName+"</a>\n" +
-                        "                            <span class='user-subhead'>value</span>\n" +
+                        "                            <span class='user-subhead'>"+value.role+"</span>\n" +
                         "                        </td>\n" +
                         "                        <td>\n" +
                         "                            2013/08/08\n" +

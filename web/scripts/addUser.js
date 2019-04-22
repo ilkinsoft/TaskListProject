@@ -45,7 +45,7 @@ function sendFormAsAjax() {
         .done(function (data) {
             //alert("done")
             if(data.resultCode==="SUCCESS"){
-                window.location.href = '';
+                window.location.href = 'users.jsp';
             }
 
         })
