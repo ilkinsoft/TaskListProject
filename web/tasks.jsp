@@ -37,110 +37,102 @@
     <%--<b> ${task.textOfTask} </b>--%>
     <%--</c:forEach>--%>
 
-    <%--<form id="addForm" action="AddTask" method="post">--%>
-        <%--<div class="form-row">--%>
-            <%--<div class="form-group col-sm-6">--%>
-                <%--<label for="textOfTask">Text of task</label>--%>
-                <%--<input type="text" class="form-control" id="textOfTask" name="textOfTask"--%>
-                       <%--placeholder="Text of task" required>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="form-row">--%>
-            <%--<div class="form-group col-sm-6">--%>
-                <%--<label for="assignedTo">Assigned to</label>--%>
-                <%--<select class="form-control" id="assignedTo" name="assignedTo">--%>
-                    <%--<% for (int i = 0; i < userList.size(); i++) { %>--%>
-                    <%--<option value="<%= userList.get(i).getId() %>">--%>
-                        <%--<%= userList.get(i).getFirstName() + " " + userList.get(i).getLastName()                    %>--%>
-                    <%--</option>--%>
-                    <%--<% } %>--%>
-                <%--</select>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="form-row">--%>
-            <%--<div class="form-group col-sm-6">--%>
-                <%--<label for="createdBy">Created by</label>--%>
-                <%--<select class="form-control" id="createdBy" name="createdBy">--%>
-                    <%--<% for (int i = 0; i < userList.size(); i++) { %>--%>
-                    <%--<option value="<%= userList.get(i).getId() %>">--%>
-                        <%--<%= userList.get(i).getFirstName() + " " + userList.get(i).getLastName()                    %>--%>
-                    <%--</option>--%>
-                    <%--<% } %>--%>
-                <%--</select>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="form-row">--%>
-            <%--<div class="form-group col-sm-6">--%>
-                <%--<label for="isDone">Is Done</label>--%>
-                <%--<select class="form-control" id="isDone" name="isDone">--%>
-                    <%--<option value="0">No</option>--%>
-                    <%--<option value="1">Yes</option>--%>
-                <%--</select>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="form-row">--%>
-            <%--<div class="form-group col-sm-6">--%>
-                <%--<label for="dueDate">Deadline</label>--%>
-                <%--<input type="date" class="form-control" id="dueDate" name="dueDate"--%>
-                       <%--placeholder="Text of task" required>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="form-row">--%>
-            <%--<div class="form-group col-sm-6">--%>
-                <%--<label for="priority">Priority</label>--%>
-                <%--<select class="form-control" id="priority" name="priority">--%>
-                    <%--<option value="LOW">Low</option>--%>
-                    <%--<option value="MEDIUM">Medium</option>--%>
-                    <%--<option value="HIGH">High</option>--%>
-                <%--</select>--%>
-            <%--</div>--%>
-        <%--</div>--%>
+    <form id="addForm" action="AddTask" method="post">
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="textOfTask">Text of task</label>
+                <input type="text" class="form-control" id="textOfTask" name="textOfTask"
+                       placeholder="Text of task" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="assignedTo">Assigned to</label>
+                <select class="form-control" id="assignedTo" name="assignedTo">
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="createdBy">Created by</label>
+                <select class="form-control" id="createdBy" name="createdBy">
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="isDone">Is Done</label>
+                <select class="form-control" id="isDone" name="isDone">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="dueDate">Deadline</label>
+                <input type="date" class="form-control" id="dueDate" name="dueDate"
+                       placeholder="Text of task" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="priority">Priority</label>
+                <select class="form-control" id="priority" name="priority">
+                    <option value="LOW">Low</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="HIGH">High</option>
+                </select>
+            </div>
+        </div>
 
-        <%--<div class="form-row">--%>
-            <%--<div class="form-group col-sm-6">--%>
-                <%--<button type="submit" id="btnSaveTask" class="btn btn-primary">Save Task</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</form>--%>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <button type="submit" id="btnSaveTask" class="btn btn-primary">Save Task</button>
+            </div>
+        </div>
+    </form>
 
     <button class="btn btn-primary" id="btnAddTask">Add Task</button>
 
-    <%--<%--%>
-        <%--List<Task> taskList = (ArrayList<Task>) session.getAttribute("taskList");--%>
-        <%--for (int i = 0; i < taskList.size(); i++) { %>--%>
-    <%--<div class="alert alert-primary" role="alert">--%>
-        <%--<div class="float-left">Assigned to:--%>
-            <%--<%=taskList.get(i).getAssignedTo().getFirstName()%>--%>
-        <%--</div>--%>
-        <%--<div class="float-right">--%>
-            <%--Mark as done: <input type="checkbox" aria-label="Mark as done">--%>
-        <%--</div>--%>
+    <div id="taskListSection"></div>
 
-        <%--&lt;%&ndash;<hr>&ndash;%&gt;--%>
-        <%--<div class="alert-link" style="clear:both">--%>
-            <%--<%=taskList.get(i).getTextOfTask()%>--%>
-        <%--</div>--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-sm-3">--%>
-                <%--<small>Created by: <%=taskList.get(i).getCreatedBy().getFirstName()%>--%>
-                <%--</small>--%>
-            <%--</div>--%>
-            <%--<div class="col-sm-3">--%>
-                <%--<small>Created at: <%=taskList.get(i).getCreatedAt()%>--%>
-                <%--</small>--%>
-            <%--</div>--%>
-            <%--<div class="col-sm-3">--%>
-                <%--<small>Deadline: <%=taskList.get(i).getDueDate()%>--%>
-                <%--</small>--%>
-            <%--</div>--%>
-            <%--<div class="col-sm-3">--%>
-                <%--<small>Priority: <%=taskList.get(i).getPriority()%>--%>
-                <%--</small>--%>
-            <%--</div>--%>
-        <%--</div>--%>
+    <%--<%--%>
+    <%--List<Task> taskList = (ArrayList<Task>) session.getAttribute("taskList");--%>
+    <%--for (int i = 0; i < taskList.size(); i++) { %>--%>
+    <%--<div class="alert alert-primary" role="alert">--%>
+    <%--<div class="float-left">Assigned to:--%>
+    <%--<%=taskList.get(i).getAssignedTo().getFirstName()%>--%>
+    <%--</div>--%>
+    <%--<div class="float-right">--%>
+    <%--Mark as done: <input type="checkbox" aria-label="Mark as done">--%>
+    <%--</div>--%>
+
+    <%--&lt;%&ndash;<hr>&ndash;%&gt;--%>
+    <%--<div class="alert-link" style="clear:both">--%>
+    <%--<%=taskList.get(i).getTextOfTask()%>--%>
+    <%--</div>--%>
+    <%--<div class="row">--%>
+    <%--<div class="col-sm-3">--%>
+    <%--<small>Created by: <%=taskList.get(i).getCreatedBy().getFirstName()%>--%>
+    <%--</small>--%>
+    <%--</div>--%>
+    <%--<div class="col-sm-3">--%>
+    <%--<small>Created at: <%=taskList.get(i).getCreatedAt()%>--%>
+    <%--</small>--%>
+    <%--</div>--%>
+    <%--<div class="col-sm-3">--%>
+    <%--<small>Deadline: <%=taskList.get(i).getDueDate()%>--%>
+    <%--</small>--%>
+    <%--</div>--%>
+    <%--<div class="col-sm-3">--%>
+    <%--<small>Priority: <%=taskList.get(i).getPriority()%>--%>
+    <%--</small>--%>
+    <%--</div>--%>
+    <%--</div>--%>
     <%--</div>--%>
     <%--<%--%>
-        <%--}--%>
+    <%--}--%>
     <%--%>--%>
 
 </div>

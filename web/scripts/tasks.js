@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-    loadEntities();
+    loadTasks();
+    loadUsersToDropdown();
 
     $('#btnAddTask').click(function () {
         $('#addForm').fadeIn();
@@ -34,7 +35,7 @@ $(document).ready(function () {
             if (data.resultCode === "SUCCESS") {
                 alert("Task added.")
                 $('#addForm').fadeOut();
-                loadEntities();
+                loadTasks();
             } else {
                 alert("Failed.")
             }
@@ -46,58 +47,67 @@ $(document).ready(function () {
 
 })
 
-function loadEntities() {
+function loadTasks() {
 
+    $('#taskListSection').empty();
     $.get('Tasks')
         .done(function (data) {
-            // console.log(data)
-            $.each(function (key, value) {
-                console.log(value);
-            })
+            if (data.resultCode === 'SUCCESS') {
+                $.each(data.data, function (key, value) {
+                    let html =
+                        '<div class="alert alert-primary" role="alert">' +
+                        '<div class="float-left">Assigned to: ' +
+                        this.assignedTo.firstName + ' ' + this.assignedTo.lastName +
+                        '</div>' +
+                        '<div class="float-right">' +
+                        'Mark as done: <input type="checkbox" aria-label="Mark as done">' +
+                        '</div>' +
 
-        // let html =
-        // '<div class="alert alert-primary" role="alert">' +
-        //         '<div class="float-left">Assigned to:' +
-        //         '<%=taskList.get(i).getAssignedTo().getFirstName()%>' +
-        //         '</div>' +
-        //         '<div class="float-right">' +
-        //         'Mark as done: <input type="checkbox" aria-label="Mark as done">' +
-        //         '</div>' +
-        //
-        //         '<div class="alert-link" style="clear:both">' +
-        //     // <%=taskList.get(i).getTextOfTask()%>
-        //         '</div>' +
-        //         '<div class="row">' +
-        //         '<div class="col-sm-3">' +
-        //         '<small>Created by: <%=taskList.get(i).getCreatedBy().getFirstName()%>' +
-        //         '</small>' +
-        //         '</div>' +
-        //         '<div class="col-sm-3">' +
-        //         '<small>Created at: <%=taskList.get(i).getCreatedAt()%>' +
-        //         '</small>' +
-        //         '</div>' +
-        //         '<div class="col-sm-3">' +
-        //         '<small>Deadline: <%=taskList.get(i).getDueDate()%>' +
-        //         '</small>' +
-        //         '</div>' +
-        //         '<div class="col-sm-3">' +
-        //         '<small>Priority: <%=taskList.get(i).getPriority()%>' +
-        //         '</small>' +
-        //         '</div>' +
-        //         '</div>' +
-        //         '</div>'
+                        '<div class="alert-link" style="clear:both">' +
+                        this.textOfTask +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-sm-3">' +
+                        '<small>Created by: ' + this.createdBy.firstName + ' ' + this.createdBy.lastName +
+                        '</small>' +
+                        '</div>' +
+                        '<div class="col-sm-3">' +
+                        '<small>Created at: ' + this.createdAt.day + '/' + this.createdAt.month + '/' + this.createdAt.year +
+                        '</small>' +
+                        '</div>' +
+                        '<div class="col-sm-3">' +
+                        '<small>Deadline: ' + this.dueDate.day + '/' + this.dueDate.month + '/' + this.dueDate.year +
+                        '</small>' +
+                        '</div>' +
+                        '<div class="col-sm-3">' +
+                        '<small>Priority: ' + this.priority +
+                        '</small>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>'
 
-
-            // if (data.resultCode === "SUCCESS") {
-        //     alert("Task added.")
-        //     $('#addForm').fadeOut();
-        //     loadEntities();
-        // } else {
-        //     alert("Failed.")
-        // }
-    }).fail(function () {
+                    $('div#taskListSection').append(html)
+                    console.log('worked')
+                });
+            }
+            else
+                alert("Fail. Try Again!")
+        }).fail(function () {
         alert("Fail. Try Again!")
     });
-
 }
 
+function loadUsersToDropdown() {
+
+    $.get('users')
+        .done(function (data) {
+            if (data.resultCode === 'SUCCESS') {
+                $.each(data.data, function (key, value) {
+                    let option = '<option value=' + this.id + '>'+this.firstName+' '+this.lastName+'</option>';
+                    $('select#assignedTo, select#createdBy').append(option);
+                });
+            }
+        }).fail(function () {
+        alert("Fail. Try Again!")
+    });
+}

@@ -42,9 +42,9 @@ public class TaskController extends HttpServlet {
 
         TaskDto taskDto = new TaskDto();
         taskDto.setTextOfTask(textOfTask);
-        taskDto.setAssignedTo((UserDto) userService.getUserById(assignedTo).toEntity());
+        taskDto.setAssignedTo(userService.getUserById(assignedTo));
         taskDto.setCreatedAt(LocalDate.now());
-        taskDto.setCreatedBy((UserDto) userService.getUserById(createdBy).toEntity());
+        taskDto.setCreatedBy(userService.getUserById(createdBy));
         taskDto.setDone(isDone);
         taskDto.setDueDate(dueDate);
         taskDto.setPriority(priority);

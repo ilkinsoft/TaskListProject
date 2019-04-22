@@ -2,7 +2,9 @@ package com.wap.service;
 
 import com.wap.model.dao.TaskDao;
 import com.wap.model.dto.TaskDto;
+import com.wap.model.enums.ResultCode;
 import com.wap.model.result.Result;
+import com.wap.model.result.ResultData;
 
 import java.util.List;
 
@@ -17,8 +19,11 @@ public class TaskServiceImpl implements ITaskService {
 //    }
 
     @Override
-    public List<TaskDto> getTasks() {
-        return taskDao.getAll();
+    public ResultData<List<TaskDto>> getTasks() {
+        ResultData<List<TaskDto>> resultData = new ResultData<>();
+        resultData.setData(taskDao.getAll());
+        resultData.setResultCode(ResultCode.SUCCESS);
+        return resultData;
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.wap.model.dto.UserDto;
 import com.wap.model.entity.Userr;
 import com.wap.model.enums.Priority;
 import com.wap.model.result.Result;
+import com.wap.model.result.ResultData;
 import com.wap.service.ITaskService;
 import com.wap.service.IUserrService;
 import com.wap.service.TaskServiceImpl;
@@ -31,7 +32,7 @@ public class TaskListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<TaskDto> taskDtos = taskService.getTasks();
+        ResultData<List<TaskDto>> taskDtos = taskService.getTasks();
 //        HttpSession session = request.getSession();
 //        session.setAttribute("taskList", taskDtos);
 
