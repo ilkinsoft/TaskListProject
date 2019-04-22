@@ -43,9 +43,9 @@ public class EditTaskController extends HttpServlet {
 
         TaskDto taskDto = taskService.getTaskById(id);
         taskDto.setTextOfTask(textOfTask);
-        taskDto.setAssignedTo(userService.getUserById(assignedTo));
+        taskDto.setAssignedTo(userService.getUserById(assignedTo).getData());
         taskDto.setCreatedAt(createdAt);
-        taskDto.setCreatedBy(userService.getUserById(createdBy));
+        taskDto.setCreatedBy(userService.getUserById(createdBy).getData());
         taskDto.setDone(isDone);
         taskDto.setDueDate(dueDate);
         taskDto.setPriority(priority);
