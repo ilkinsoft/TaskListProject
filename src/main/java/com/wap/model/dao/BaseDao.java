@@ -99,6 +99,7 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
         try {
             list = session.createCriteria(typeTEntity).list();
         } catch (Exception e) {
+            e.printStackTrace();
             list = new ArrayList<>();
         }
         session.close();

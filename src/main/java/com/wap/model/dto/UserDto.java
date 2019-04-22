@@ -1,6 +1,5 @@
 package com.wap.model.dto;
 
-import com.wap.model.entity.Team;
 import com.wap.model.entity.Userr;
 import com.wap.model.enums.Role;
 import lombok.Getter;
@@ -12,10 +11,10 @@ import lombok.Setter;
 public class UserDto extends BaseDto {
 
 
-    public UserDto(){
+    public UserDto() {
 
-        super.typeTdto=UserDto.class;
-        super.typeTEntoty= Userr.class;
+        super.typeTdto = UserDto.class;
+        super.typeTEntoty = Userr.class;
 
     }
 
