@@ -22,7 +22,7 @@ public class TeamDto extends BaseDto{
 
         private String name;
 
-        private List<Userr> members;
+        private List<UserDto> members;
 
 }
 

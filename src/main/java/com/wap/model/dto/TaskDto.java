@@ -23,9 +23,9 @@ public class TaskDto extends BaseDto {
     private String textOfTask;
     private boolean isDone;
 
-    private Userr createdBy;
+    private UserDto createdBy;
 
-    private Userr assignedTo;
+    private UserDto assignedTo;
 
     private LocalDate createdAt;
 

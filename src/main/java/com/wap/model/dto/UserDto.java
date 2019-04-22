@@ -29,7 +29,7 @@ public class UserDto extends BaseDto {
 
     private Role role;
 
-    private Team team;
+//    private TeamDto team;
 
 
 }
