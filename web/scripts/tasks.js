@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    loadEntities();
+
     $('#btnAddTask').click(function () {
         $('#addForm').fadeIn();
     })
@@ -44,9 +47,10 @@ $(document).ready(function () {
 })
 
 function loadEntities() {
+
     $.get('Tasks')
         .done(function (data) {
-            console.log(data)
+            // console.log(data)
             $.each(function (key, value) {
                 console.log(value);
             })

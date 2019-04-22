@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<jsp:include page="Tasks"/>
+<%--<jsp:include page="Tasks"/>--%>
 <%@include file="shared/navbar.jsp" %>
 
 <%--<% List<Userr> userList = (ArrayList<Userr>) session.getAttribute("userList"); %>--%>

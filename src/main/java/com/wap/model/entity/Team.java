@@ -17,7 +17,7 @@ public class Team  extends BaseEntity{
 
     private String name;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
-    private List<Userr> members;
+//    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+//    private List<Userr> members;
 
 }
