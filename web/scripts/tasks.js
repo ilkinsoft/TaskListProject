@@ -153,7 +153,9 @@ function loadTasks() {
                         '</div>' +
                         '</div>' +
                         '<div class="row">' +
-                        '<div class="col-sm-12">' +
+                        '<div class="col-sm-3"><button onclick="deleteTask(' + this.id + ')" class="btn btn-danger btn-sm">Delete</button>' +
+                        '</div>' +
+                        '<div class="col-sm-9">' +
                         '<button id="' + this.id + '" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal" ' +
                         'data-id="' + this.id + '" ' +
                         'data-textOfTask="' + this.textOfTask + '" ' +
@@ -163,14 +165,14 @@ function loadTasks() {
                         this.createdAt.date.year + '-' + addZero(this.createdAt.date.month) + '-' + addZero(this.createdAt.date.day) + 'T' + addZero(this.createdAt.time.hour) + ':' + addZero(this.createdAt.time.minute) + '" ' +
                         //+ moment(this.createdAt).format("YYYY-MM-DDThh:mm") + '" ' +
                         'data-dueDate="' +
-                    this.dueDate.date.year + '-' + addZero(this.dueDate.date.month) + '-' + addZero(this.dueDate.date.day) + 'T' + addZero(this.dueDate.time.hour) + ':' + addZero(this.dueDate.time.minute) + '" ' +
-                    //+ moment(this.dueDate).format("YYYY-MM-DDThh:mm") + '" ' +
-                    'data-isDone="' + this.isDone + '" ' +
-                    'data-priority="' + this.priority + '" ' +
-                    '">Update task</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
+                        this.dueDate.date.year + '-' + addZero(this.dueDate.date.month) + '-' + addZero(this.dueDate.date.day) + 'T' + addZero(this.dueDate.time.hour) + ':' + addZero(this.dueDate.time.minute) + '" ' +
+                        //+ moment(this.dueDate).format("YYYY-MM-DDThh:mm") + '" ' +
+                        'data-isDone="' + this.isDone + '" ' +
+                        'data-priority="' + this.priority + '" ' +
+                        '">Update task</button>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
 
                     // var ilkins = $('.ilkins')[0];
                     // ilkins.innerHTML = 'softdeveloper';
@@ -208,6 +210,34 @@ function loadUsersToDropdown() {
     });
 }
 
+function deleteTask(id) {
+    $.post('DeleteTask', {
+        id: id
+    }).done(function (data) {
+        if (data.resultCode === "SUCCESS") {
+            alert("Task deleted.")
+            loadTasks();
+        } else {
+            alert("Failed.")
+        }
+    })
+        .fail(function () {
+            alert("Fail. Try Again!")
+        });
+
+    // $.get("/DeleteTask/" + id, function () {
+    //     alert("success");
+    // })
+    //     .done(function () {
+    //         alert("second success");
+    //     })
+    //     .fail(function () {
+    //         alert("error");
+    //     })
+    //     .always(function () {
+    //         alert("finished");
+    //     });
+}
 
 function formatDate(date) {
     var d = new Date(date),
