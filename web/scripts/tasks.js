@@ -185,7 +185,11 @@ $(document).ready(function () {
                 alert("Task changed.")
                 loadTasks();
             } else {
-                alert("Failed.")
+                alert("Fail. You are not assigned to this task!");
+                /*let chb=$(this);
+                chb.prop('checked', !chb.prop('checked'));*/
+                location.reload();
+
             }
         })
             .fail(function () {
