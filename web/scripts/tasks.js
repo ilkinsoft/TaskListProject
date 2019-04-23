@@ -12,7 +12,7 @@ $(document).ready(function () {
     const $source = document.querySelector('#txtSearch');
     const typeHandler = function(e) {
         $('.alert').hide();
-        var elements = $('.alert-link');
+        let elements = $('.alert-link');
         $.each(elements, function (key, element) {
             if($(element).text().toLowerCase().includes(e.target.value.toLowerCase())){
                 $(element).parent().show();
@@ -22,6 +22,23 @@ $(document).ready(function () {
     $source.addEventListener('input', typeHandler) // register for oninput
 
 
+    // IN-PAGE FILTER CODE
+    $('#drpPriority').on('change', function() {
+        let selectedValue = this.value;
+        if(selectedValue == 'ALL'){
+            $('.alert').show();
+            return;
+        }
+
+        $('.alert').hide();
+        let elements = $('.lblPriority');
+        $.each(elements, function (key, element) {
+            if($(element).text().toLowerCase() == selectedValue.toLowerCase()){
+                $(element).parent().parent().parent().show();
+            }
+        })
+
+    });
 
 
     $('#exampleModal').on('show.bs.modal', function (event) {
@@ -190,7 +207,8 @@ function loadTasks() {
                         '</small>' +
                         '</div>' +
                         '<div class="col-sm-3">' +
-                        '<small>Priority: ' + this.priority +
+                        '<small>Priority: </small>' +
+                        '<small class="lblPriority">' + this.priority + '</small>' +
                         '</small>' +
                         '</div>' +
                         '</div>' +

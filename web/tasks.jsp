@@ -34,6 +34,17 @@
                 <input id="txtSearch" type="text" class="form-control" placeholder="Search for task name...">
             </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="input-group">
+                <select id="drpPriority" class="form-control">
+                    <option value="ALL">ALL</option>
+                    <option value="HIGH">HIGH</option>
+                    <option value="MEDIUM">MEDIUM</option>
+                    <option value="LOW">LOW</option>
+                </select>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+
     </div>
     <br>
 
