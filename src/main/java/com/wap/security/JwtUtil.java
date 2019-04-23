@@ -28,7 +28,7 @@ public class JwtUtil {
     }
 
     public static String generate(UserJwt userJwt) {
-        Claims claims = Jwts.claims().setSubject(userJwt.getName());
+        Claims claims = Jwts.claims().setSubject(userJwt.getEmail());
         claims.put("data", userJwt);
 
         return Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, secret).compact();

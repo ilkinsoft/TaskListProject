@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -32,6 +33,9 @@ public class LogInController extends HttpServlet {
 
         Result result = new Result();
         String responseJSON;
+        HttpSession session = request.getSession();
+
+        //System.out.println("token: " + session.getAttribute("token"));
 
 
         String email = request.getParameter("email");
@@ -57,11 +61,7 @@ public class LogInController extends HttpServlet {
 
 
         } else {
-            UserJwt userJwt = new UserJwt();
-            userJwt.setEmail(userDto.getEmail());
-            userJwt.setCreatedDate(userDto.getCreatedAt());
-            userJwt.setName(userDto.getFirstName());
-
+            UserJwt userJwt = new UserJwt(userDto.getRole(),userDto.getEmail(),userDto.getId());
 
 
             ResultData<String> resultData = new ResultData<>();
@@ -69,8 +69,9 @@ public class LogInController extends HttpServlet {
             resultData.setResultCode(ResultCode.SUCCESS);
             responseJSON = new Gson().toJson(resultData);
 
-        }
+            session.setAttribute("token", resultData.getData());
 
+        }
 
 
         PrintWriter out = response.getWriter();

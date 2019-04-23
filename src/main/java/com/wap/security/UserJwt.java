@@ -1,10 +1,9 @@
 package com.wap.security;
 
 
+import com.wap.model.enums.Role;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 
 @Getter
@@ -15,16 +14,15 @@ public class UserJwt {
     public UserJwt() {
     }
 
-    public UserJwt(String name, String email, LocalDateTime createdDate) {
-        this.name = name;
+    public UserJwt(Role role, String email, int userID) {
         this.email = email;
-        this.createdDate = createdDate;
+        this.role = role;
+        this.userID=userID;
     }
 
-    private String name;
     private String email;
-
-    private LocalDateTime createdDate;
+    private Role role;
+    private int userID;
 
 
 }

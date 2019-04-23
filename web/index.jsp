@@ -14,27 +14,37 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="scripts/singIn.js"></script>
+    <script src="scripts/index.js"></script>
 
     <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
+
 
 <div class="container">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
-                    <form class="form-signin" >
+                    <h5  class="card-title text-center">Sign In</h5>
+                    <h6 id="errors"  class="text-center" style="color: red"></h6>
+
+                    <form id="singInForm"  class="form-signin">
+
+
+
+
                         <div class="form-label-group">
-                            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            <input  type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address"
+                                   required>
                         </div>
 
                         <br>
 
+
                         <div class="form-label-group">
-                            <input  name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <input  type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
+                                   required>
                         </div>
                         <br>
 
@@ -42,12 +52,13 @@
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                             <label class="custom-control-label" for="customCheck1">Remember password</label>
                         </div>
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+
+                        <button id="sendButton" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" >Sign in</button>
 
                     </form>
 
 
-                </div>
+
             </div>
         </div>
     </div>
