@@ -107,7 +107,11 @@
         </div>
     </form>
 
-    <button class="btn btn-primary" id="btnAddTask">Add Task</button>
+    <div id="btnAddTaskDiv">
+        <button class="btn btn-primary" id="btnAddTask">Add Task</button>
+
+    </div>
+
 
     <%--BOOTSTRAP MODAL--%>
 

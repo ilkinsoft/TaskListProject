@@ -36,8 +36,9 @@ function chechAuthorization() {
         //todo sayfa gizlenecekse bile o sayfa ile ilgili butun kisitlamalari ekle buraya
         //cant see teams page
         //cant see users page
-        //cant update or delete task
-        //can only mark as done task if it assigned to him
+        //cant update/delete/add task
+        //can only mark as done task if it assigned to him ---PENDING
+        //cannot see other pages even if he types to address bar
 
 
         //navbar.jsp
@@ -53,6 +54,9 @@ function chechAuthorization() {
 
         $('.buttonUpdate').css('visibility', 'gone');
         $('.buttonUpdate').text('');
+
+        $('#btnAddTaskDiv').css('visibility', 'gone');
+        $('#btnAddTaskDiv').text('');
 
     } else {
         //admin can only do user stuffs

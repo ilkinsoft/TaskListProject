@@ -61,11 +61,11 @@ public class LogInController extends HttpServlet {
 
 
         } else {
-            UserJwt userJwt = new UserJwt(userDto.getRole(),userDto.getEmail(),userDto.getId());
+            UserJwt userJwt = new UserJwt(userDto.getRole(),userDto.getEmail(),userDto.getId(),userDto.getFirstName(),userDto.getLastName(),userDto .getTeam());
 
 
-            ResultData<String> resultData = new ResultData<>();
-            resultData.setData((userDto.getRole()).toString());
+            ResultData<UserDto> resultData = new ResultData<>();
+            resultData.setData((userDto));
             resultData.setResultCode(ResultCode.SUCCESS);
             responseJSON = new Gson().toJson(resultData);
 

@@ -25,6 +25,9 @@ public class JwtUtil {
             LinkedHashMap linkedHashMap = (LinkedHashMap) body.get("data");
             jwtUser = new UserJwt();
             jwtUser.setEmail(linkedHashMap.get("email").toString());
+            jwtUser.setFirstName(linkedHashMap.get("firstName").toString());
+            jwtUser.setLastName(linkedHashMap.get("lastName").toString());
+
             jwtUser.setRole(Role.valueOf(linkedHashMap.get("role").toString()));
             jwtUser.setUserID((int)linkedHashMap.get("userID"));
 

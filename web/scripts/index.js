@@ -41,9 +41,14 @@ function sendAddOrEditUserAsAjax() {
             if(data.resultCode==="SUCCESS"){
 
                 localStorage.setItem("email",$("#inputEmail").val());
-                localStorage.setItem("role",data.data);
+                localStorage.setItem("role",data.data.role);
+                localStorage.setItem("firstName",data.data.firstName);
+                localStorage.setItem("lastName",data.data.lastName);
+                localStorage.setItem("teamName",data.data.team.name);
+                localStorage.setItem("teamID",data.data.team.id);
 
-                window.location.href = 'users.jsp';
+
+                window.location.href = 'tasks.jsp';
 
             }else if(data.resultCode==="NO_SUCH_USER"){
 

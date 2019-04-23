@@ -13,6 +13,7 @@ import java.io.IOException;
 //@WebFilter(urlPatterns = {"/*,/tasks*,/teams*,/userdetails*,/users*"})
 @WebFilter(urlPatterns = {"/*"})
 public class AuthenticationFilter implements Filter {
+    private UserJwt userJwt;
     public void destroy() {
     }
 
@@ -42,16 +43,29 @@ public class AuthenticationFilter implements Filter {
         String token = (String) session.getAttribute("token");
 
         if(token!=null && !token.equals("")){
-            UserJwt userJwt = JwtUtil.validate(token);
+            userJwt = JwtUtil.validate(token);
             if(userJwt!=null){
                 tokenOK=true;
                 session.setAttribute("userJwt",userJwt);
+
+                if(userJwt.getRole().toString().equals("DEVELOPER")
+                        && (request.getRequestURI().equals(loginURI+"/users.jsp")
+                        || request.getRequestURI().equals(loginURI+"/teams.jsp"))){
+
+                    response.sendRedirect("tasks.jsp");
+
+                }else {
+
+                }
+
 
             }
         }
 
         if(loginRequest || tokenOK){
+
             chain.doFilter(req, resp);
+
 
         }else {
             response.sendRedirect("index.jsp");
