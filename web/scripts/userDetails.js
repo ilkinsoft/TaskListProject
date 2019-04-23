@@ -1,4 +1,31 @@
+var allUsers;
+
 $(document).ready(function () {
+
+
+
+
+    $.get("users")
+            .done(function (data) {
+                //alert("done")
+                if (data.resultCode === "SUCCESS") {
+
+
+                    allUsers=data.data;
+
+
+/*                    $.each(data.data, function (key, value) {
+
+                    });*/
+
+
+                }
+
+            })
+            .fail(function () {
+                //alert("Fail. Try Again!")
+
+            });
 
 
 isInEditMode=$("#isInEditMode").val();
@@ -13,6 +40,10 @@ loadTeamsToDropdown();
 
         var password = $("#inputPassword").val();
         var password2 = $("#inputPassword2").val();
+        var email = $("#inputEmail").val();
+        var phone = $("#inputPhone").val();
+
+
         var errors = $("#errors");
 
         errors.empty();
@@ -24,6 +55,30 @@ loadTeamsToDropdown();
             errors.append("Passwords are not equal!");
             isSubmit = false;
         }
+
+
+        $.each(allUsers, function (key, value) {
+
+            if(isInEditMode && $("#userID").val()==value.id){
+                //user must not be warned about his own email
+                return true;
+            }
+
+            if(value.email===email){
+
+                isSubmit=false;
+                errors.append("This email is taken!");
+
+            }
+
+            if(value.phone===phone){
+                isSubmit=false;
+                errors.append("This phone is taken!");
+
+            }
+
+        });
+
 
 
         if (isSubmit) {
