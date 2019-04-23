@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
     loadTasks();
@@ -5,6 +7,22 @@ $(document).ready(function () {
     $('#btnAddTask').click(function () {
         $('#addForm').fadeIn();
     });
+
+    // IN-PAGE SEARCH CODE
+    const $source = document.querySelector('#txtSearch');
+    const typeHandler = function(e) {
+        $('.alert').hide();
+        var elements = $('.alert-link');
+        $.each(elements, function (key, element) {
+            if($(element).text().toLowerCase().includes(e.target.value.toLowerCase())){
+                $(element).parent().show();
+            }
+        })
+    }
+    $source.addEventListener('input', typeHandler) // register for oninput
+
+
+
 
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -279,3 +297,4 @@ function addZero(i) {
     }
     return i;
 }
+

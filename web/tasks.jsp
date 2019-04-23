@@ -28,6 +28,16 @@
     <%--<b> ${task.textOfTask} </b>--%>
     <%--</c:forEach>--%>
 
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input id="txtSearch" type="text" class="form-control" placeholder="Search for task name...">
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+    <br>
+
+
     <form id="addForm" action="AddTask" method="post">
         <div class="form-row">
             <div class="form-group col-sm-6">
@@ -88,7 +98,8 @@
 
     <%--BOOTSTRAP MODAL--%>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -151,7 +162,6 @@
 
 
     <div id="taskListSection"></div>
-
 
 
     <%--<%--%>
