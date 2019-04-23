@@ -31,11 +31,21 @@
     <%--</c:forEach>--%>
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-3">
             <div class="input-group">
-                <input id="txtSearch" type="text" class="form-control" placeholder="Search for task name...">
+                <input id="txtSearch" type="text" class="form-control" placeholder="Search for task text...">
             </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
+        </div><!-- /.col-lg-3 -->
+        <div class="col-lg-3">
+            <div class="input-group">
+                <label class="form-control">User filter:</label>
+                <select id="drpUser" class="form-control">
+                    <option value="ALL">ALL</option>
+                    <option value="MY_TEAM">MY TEAM</option>
+                    <option value="MINE">MINE</option>
+                </select>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-3 -->
         <div class="col-lg-3">
             <div class="input-group">
                 <label class="form-control">Priority filter:</label>

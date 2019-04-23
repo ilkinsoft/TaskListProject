@@ -36,6 +36,38 @@ $(document).ready(function () {
         })
     });
 
+    $('#drpUser').on('change', function () {
+
+        let selectedValue = this.value;
+        if (selectedValue == 'ALL') {
+            $('.alert').show();
+            return;
+        }
+        $('.alert').hide();
+
+        let selectedText = $("#drpUser option:selected").html();
+
+        if(selectedText == 'MINE'){
+            let userName = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
+            let elements = $('.lblAssignedTo');
+            $.each(elements, function (key, element) {
+                if ($(element).text() == userName) {
+                    $(element).parent().parent().show();
+                }
+            })
+        }
+        if(selectedText == 'MY TEAM'){
+            let teamName = localStorage.getItem('teamName');
+            let elements = $('.lblTeamName');
+            $.each(elements, function (key, element) {
+                if ($(element).text() == teamName) {
+                    $(element).parent().parent().show();
+                }
+            })
+        }
+
+
+    });
 
     // IN-PAGE SORT CODE
     $('#drpOrder').on('change', function () {
@@ -202,6 +234,7 @@ function loadTasks(orderColumn, orderRule) {
                         this.assignedTo.firstName + ' ' + this.assignedTo.lastName +
                         '</label>' +
                         '<input class="txtAssignedTo" name="txtAssignedTo">' +
+                        ' / Team: <label class="lblTeamName">' + this.assignedTo.team.name + '</label>' +
                         '</div>' +
                         '<div class="float-right">' +
                         'Is done: ' + isDoneInput +
