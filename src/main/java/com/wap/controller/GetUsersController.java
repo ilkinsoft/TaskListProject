@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/users")
-public class GetAllUsers extends HttpServlet {
+public class GetUsersController extends HttpServlet {
 
     private IUserrService userService = new UserServiceImpl();
 

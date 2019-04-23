@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @WebServlet("/AddTask")
-public class TaskController extends HttpServlet {
+public class AddTaskController extends HttpServlet {
 
     private ITaskService taskService = new TaskServiceImpl();
     private IUserrService userService = new UserServiceImpl();
@@ -57,11 +57,6 @@ public class TaskController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         out.println(responseJSON);
         out.flush();
-
-//        String color = request.getParameter("color");
-//        request.setAttribute("result", "");
-
-//        request.getRequestDispatcher("addtask.jsp").forward(request, response);
     }
 
     @Override
