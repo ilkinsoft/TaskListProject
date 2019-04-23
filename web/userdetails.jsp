@@ -17,6 +17,8 @@
     <script src="scripts/userDetails.js"></script>
 
     <!------ Include the above in your HEAD tag ---------->
+    <script src="shared/authorization.js"></script>
+
 </head>
 <body>
 
@@ -73,6 +75,8 @@
                             <input value="${param.phone}" type="text" id="inputPhone"  name="phone" class="form-control" placeholder="Phone" required>
                         </div>
                         <br>
+
+
 
                         <input id="roleHelper" type="hidden" value="${param.role}">
                         <input id="teamHelper" type="hidden" value="${param.team}">

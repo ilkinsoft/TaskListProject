@@ -40,6 +40,9 @@ function sendAddOrEditUserAsAjax() {
         .done(function (data) {
             if(data.resultCode==="SUCCESS"){
 
+                localStorage.setItem("email",$("#inputEmail").val());
+                localStorage.setItem("role",data.data);
+
                 window.location.href = 'users.jsp';
 
             }else if(data.resultCode==="NO_SUCH_USER"){

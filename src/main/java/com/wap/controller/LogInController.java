@@ -65,11 +65,11 @@ public class LogInController extends HttpServlet {
 
 
             ResultData<String> resultData = new ResultData<>();
-            resultData.setData(JwtUtil.generate(userJwt));
+            resultData.setData((userDto.getRole()).toString());
             resultData.setResultCode(ResultCode.SUCCESS);
             responseJSON = new Gson().toJson(resultData);
 
-            session.setAttribute("token", resultData.getData());
+            session.setAttribute("token", JwtUtil.generate(userJwt));
 
         }
 

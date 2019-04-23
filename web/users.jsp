@@ -38,8 +38,14 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="shared/authorization.js"></script>
 
     <title>Users</title>
+
+
+<%--                            <script>
+                            $('#buttonAddUser').css('visibility', 'gone');
+                        </script>--%>
 </head>
 <body>
 <%@include file="shared/navbar.jsp" %>
@@ -47,11 +53,11 @@
 
 
 </div>
-<div class="clearfix">
+<div  id="buttonAddUser" class="clearfix">
 
-    <div class="pull-right top-page-ui">
+    <div  class="pull-right top-page-ui">
         <a href="userdetails.jsp" class="btn btn-primary pull-right">
-            <i class="fa fa-plus-circle fa-lg"></i> Add user
+            <i  class="fa fa-plus-circle fa-lg"></i> Add user
         </a>
     </div>
 </div>
@@ -66,7 +72,6 @@
                         <th><span>Created At</span></th>
                         <th class="text-center"><span>Phone</span></th>
                         <th ><span>Team</span></th>
-
                         <th><span>Email</span></th>
 
                         <th>&nbsp;</th>

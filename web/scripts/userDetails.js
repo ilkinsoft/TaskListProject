@@ -5,32 +5,11 @@ $(document).ready(function () {
 
 
 
-    $.get("users")
-            .done(function (data) {
-                //alert("done")
-                if (data.resultCode === "SUCCESS") {
 
-
-                    allUsers=data.data;
-
-
-/*                    $.each(data.data, function (key, value) {
-
-                    });*/
-
-
-                }
-
-            })
-            .fail(function () {
-                //alert("Fail. Try Again!")
-
-            });
 
 
 isInEditMode=$("#isInEditMode").val();
 
-loadTeamsToDropdown();
 
 
 
@@ -112,6 +91,9 @@ loadTeamsToDropdown();
         alert();
     });*/
 
+    loadTeamsToDropdown();
+
+    chechAuthorization();
 
 
 });
@@ -164,8 +146,40 @@ function loadTeamsToDropdown() {
                 if ($("#teamHelper").val()!=="") {
                     $('select#team').val($("#teamHelper").val());
                 }
+
+
+                getAllUsers();
+
+
             }
         }).fail(function () {
         alert("Fail. Try Again!")
     });
+}
+
+
+function getAllUsers() {
+
+    $.get("users")
+        .done(function (data) {
+            //alert("done")
+            if (data.resultCode === "SUCCESS") {
+
+
+                allUsers=data.data;
+
+
+                /*                    $.each(data.data, function (key, value) {
+
+                                    });*/
+
+
+            }
+
+        })
+        .fail(function () {
+            //alert("Fail. Try Again!")
+
+        });
+
 }

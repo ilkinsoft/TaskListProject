@@ -150,6 +150,8 @@ $(document).ready(function () {
                 alert("Fail. Try Again!")
             });
     });
+
+
 })
 
 function loadTasks() {
@@ -217,10 +219,10 @@ function loadTasks() {
                         '</div>' +
                         '</div>' +
                         '<div class="row">' +
-                        '<div class="col-sm-3"><button onclick="deleteTask(' + this.id + ')" class="btn btn-danger btn-sm">Delete</button>' +
+                        '<div  class="col-sm-3 buttonDelete"><button onclick="deleteTask(' + this.id + ')" class="btn btn-danger btn-sm">Delete</button>' +
                         '</div>' +
-                        '<div class="col-sm-9">' +
-                        '<button id="' + this.id + '" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal" ' +
+                        '<div class="col-sm-9 buttonUpdate">' +
+                        '<button id="' + this.id + '" class="btn btn-primary btn-sm float-right " data-toggle="modal" data-target="#exampleModal" ' +
                         'data-id="' + this.id + '" ' +
                         'data-textOfTask="' + this.textOfTask + '" ' +
                         'data-assignedTo="' + this.assignedTo.id + '" ' +
@@ -249,6 +251,9 @@ function loadTasks() {
                     } else
                         alert('append is empty')
                 });
+
+                chechAuthorization();
+
             } else
                 alert("Fail. Try Again!")
         }).fail(function () {
