@@ -36,8 +36,9 @@
                 <input id="txtSearch" type="text" class="form-control" placeholder="Search for task name...">
             </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6">
+        <div class="col-lg-3">
             <div class="input-group">
+                <label class="form-control">Priority filter:</label>
                 <select id="drpPriority" class="form-control">
                     <option value="ALL">ALL</option>
                     <option value="HIGH">HIGH</option>
@@ -45,7 +46,17 @@
                     <option value="LOW">LOW</option>
                 </select>
             </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
+        </div><!-- /.col-lg-3 -->
+        <div class="col-lg-3">
+            <div class="input-group">
+                <label class="form-control">Sort:</label>
+                <select id="drpOrder" class="form-control">
+                    <option value="NONE">NONE</option>
+                    <option value="PRIORITY_ASC">PRIORITY ASC</option>
+                    <option value="PRIORITY_DESC">PRIORITY DESC</option>
+                </select>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-3 -->
 
     </div>
     <br>
