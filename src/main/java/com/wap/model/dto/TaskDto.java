@@ -33,5 +33,4 @@ public class TaskDto extends BaseDto {
     private LocalDateTime dueDate;
 
     private Priority priority;
-
 }

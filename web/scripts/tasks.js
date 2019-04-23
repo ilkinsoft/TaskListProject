@@ -36,7 +36,17 @@ $(document).ready(function () {
         })
     });
 
-    // HIGHLIGHT IF DEADLINE PASSED 
+
+    // IN-PAGE SORT CODE
+    $('#drpOrder').on('change', function () {
+        let selectedValue = this.value;
+        if (selectedValue == 'NONE')
+            loadTasks()
+        else if (selectedValue == 'PRIORITY_ASC')
+            loadTasks('priority', 'asc')
+        else if (selectedValue == 'PRIORITY_DESC')
+            loadTasks('priority', 'desc')
+    });
 
 
     $('#exampleModal').on('show.bs.modal', function (event) {
@@ -154,7 +164,7 @@ $(document).ready(function () {
 
 })
 
-function loadTasks() {
+function loadTasks(orderColumn, orderRule) {
 
     $('#taskListSection').empty();
     $.get('Tasks')
@@ -162,6 +172,9 @@ function loadTasks() {
             if (data.resultCode === 'SUCCESS') {
 
                 loadUsersToDropdown();  // when loadTasks() complete
+
+                if (orderColumn != undefined)
+                    sortJSON(data.data, orderColumn, orderRule);
 
                 $.each(data.data, function (key, value) {
 
@@ -325,6 +338,22 @@ function addZero(i) {
     return i;
 }
 
-function highlighTasks() {
+function sortJSON(data, key, rule) {
+    return data.sort(function (a, b) {
+        var x = convertPriority(a[key]);
+        var y = convertPriority(b[key]);
+        if (rule == 'asc')
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        else
+            return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    });
+}
 
+function convertPriority(pName) {
+    if (pName == 'LOW')
+        return 0;
+    else if (pName == 'MEDIUM')
+        return 1;
+    else if (pName == 'HIGH')
+        return 2;
 }

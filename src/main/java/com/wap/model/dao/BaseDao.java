@@ -99,6 +99,7 @@ public abstract class BaseDao<TEntity extends BaseEntity, TDto extends BaseDto> 
     public List<TDto> getAll(){
         Session session = SessionSingleton.getSession();
         List<TDto> list;
+
         try {
             list = session.createCriteria(typeTEntity).list();
         } catch (Exception e) {
