@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
     loadTasks();
@@ -10,11 +8,11 @@ $(document).ready(function () {
 
     // IN-PAGE SEARCH CODE
     const $source = document.querySelector('#txtSearch');
-    const typeHandler = function(e) {
+    const typeHandler = function (e) {
         $('.alert').hide();
         let elements = $('.alert-link');
         $.each(elements, function (key, element) {
-            if($(element).text().toLowerCase().includes(e.target.value.toLowerCase())){
+            if ($(element).text().toLowerCase().includes(e.target.value.toLowerCase())) {
                 $(element).parent().show();
             }
         })
@@ -23,22 +21,22 @@ $(document).ready(function () {
 
 
     // IN-PAGE FILTER CODE
-    $('#drpPriority').on('change', function() {
+    $('#drpPriority').on('change', function () {
         let selectedValue = this.value;
-        if(selectedValue == 'ALL'){
+        if (selectedValue == 'ALL') {
             $('.alert').show();
             return;
         }
-
         $('.alert').hide();
         let elements = $('.lblPriority');
         $.each(elements, function (key, element) {
-            if($(element).text().toLowerCase() == selectedValue.toLowerCase()){
+            if ($(element).text().toLowerCase() == selectedValue.toLowerCase()) {
                 $(element).parent().parent().parent().show();
             }
         })
-
     });
+
+    // HIGHLIGHT IF DEADLINE PASSED 
 
 
     $('#exampleModal').on('show.bs.modal', function (event) {
@@ -134,7 +132,7 @@ $(document).ready(function () {
             });
     });
 
-    $(document).on('change', '.chkIsDone', function() {
+    $(document).on('change', '.chkIsDone', function () {
         let id = $(this).data('id') // Extract info from data-* attributes
 
         $.post('EditTaskStatus', {
@@ -167,13 +165,19 @@ function loadTasks() {
 
                     let isDoneInput;
                     let taskPanelColor;
-                    if(this.isDone){
-                        isDoneInput = '<input type="checkbox" class="chkIsDone" data-id="' + this.id +'" aria-label="Mark as done" checked>';
+
+                    let currentDate = new Date();
+                    let taskDueDate = new Date(this.dueDate.date.year, this.dueDate.date.month - 1, this.dueDate.date.day, this.dueDate.time.hour, this.dueDate.time.minute);
+
+                    if (this.isDone) {
+                        isDoneInput = '<input type="checkbox" class="chkIsDone" data-id="' + this.id + '" aria-label="Mark as done" checked>';
                         taskPanelColor = '<div class="alert alert-warning" role="alert">'
-                    }
-                    else{
-                        isDoneInput = '<input type="checkbox" class="chkIsDone" data-id="' + this.id +'" aria-label="Mark as done" >';
-                        taskPanelColor = '<div class="alert alert-primary" role="alert">';
+                    } else {
+                        isDoneInput = '<input type="checkbox" class="chkIsDone" data-id="' + this.id + '" aria-label="Mark as done" >';
+                        if (currentDate.valueOf() > taskDueDate.valueOf()) {
+                            taskPanelColor = '<div class="alert alert-danger" role="alert">'
+                        } else
+                            taskPanelColor = '<div class="alert alert-primary" role="alert">';
                     }
 
                     const html =
@@ -316,3 +320,6 @@ function addZero(i) {
     return i;
 }
 
+function highlighTasks() {
+
+}
