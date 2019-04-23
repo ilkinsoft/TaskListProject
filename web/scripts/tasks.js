@@ -38,7 +38,6 @@ $(document).ready(function () {
         let form = $(this);
         let url = form.attr('action');
 
-        console.log($('#isDoneEdit').val())
         $.post(url, {
             id: $('#idEdit').val(),
             textOfTask: $('#textOfTaskEdit').val(),
@@ -100,6 +99,24 @@ $(document).ready(function () {
             });
     });
 
+    $(document).on('change', '.chkIsDone', function() {
+        let id = $(this).data('id') // Extract info from data-* attributes
+
+        $.post('EditTaskStatus', {
+            id: id,
+            isDone: this.checked
+        }).done(function (data) {
+            if (data.resultCode === "SUCCESS") {
+                alert("Task changed.")
+                loadTasks();
+            } else {
+                alert("Failed.")
+            }
+        })
+            .fail(function () {
+                alert("Fail. Try Again!")
+            });
+    });
 })
 
 function loadTasks() {
@@ -112,9 +129,20 @@ function loadTasks() {
                 loadUsersToDropdown();  // when loadTasks() complete
 
                 $.each(data.data, function (key, value) {
-                    console.log(this.createdAt.date.day)
+
+                    let isDoneInput;
+                    let taskPanelColor;
+                    if(this.isDone){
+                        isDoneInput = '<input type="checkbox" class="chkIsDone" data-id="' + this.id +'" aria-label="Mark as done" checked>';
+                        taskPanelColor = '<div class="alert alert-warning" role="alert">'
+                    }
+                    else{
+                        isDoneInput = '<input type="checkbox" class="chkIsDone" data-id="' + this.id +'" aria-label="Mark as done" >';
+                        taskPanelColor = '<div class="alert alert-primary" role="alert">';
+                    }
+
                     const html =
-                        '<div class="alert alert-primary" role="alert">' +
+                        taskPanelColor +
                         '<div class="float-left">Assigned to: ' +
                         '<label class="lblAssignedTo">' +
                         this.assignedTo.firstName + ' ' + this.assignedTo.lastName +
@@ -122,7 +150,7 @@ function loadTasks() {
                         '<input class="txtAssignedTo" name="txtAssignedTo">' +
                         '</div>' +
                         '<div class="float-right">' +
-                        'Mark as done: <input type="checkbox" aria-label="Mark as done">' +
+                        'Is done: ' + isDoneInput +
                         '</div>' +
 
                         '<div class="alert-link" style="clear:both">' +
@@ -176,10 +204,8 @@ function loadTasks() {
                     // ownerTag.innerHTML = 'manipulated';
                     // var clone = ilkins.cloneNode(true);
 
-                    // console.log(html)
                     if (html != undefined) {
-                        $('div#taskListSection').append(html)
-                        // $('div#taskListSection').append(clone)
+                        $('div#taskListSection').append(html).fadeIn(200)
                     } else
                         alert('append is empty')
                 });
