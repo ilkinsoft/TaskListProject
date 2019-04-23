@@ -1,0 +1,10 @@
+#addForm{
+    display: none;
+}
+
+#btnAddTeam{
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    z-index: 10;
+}

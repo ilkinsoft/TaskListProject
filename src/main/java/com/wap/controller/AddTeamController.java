@@ -2,13 +2,11 @@ package com.wap.controller;
 
 import com.google.gson.Gson;
 import com.wap.model.dto.TaskDto;
+import com.wap.model.dto.TeamDto;
 import com.wap.model.dto.UserDto;
 import com.wap.model.enums.Priority;
 import com.wap.model.result.Result;
-import com.wap.service.ITaskService;
-import com.wap.service.IUserrService;
-import com.wap.service.TaskServiceImpl;
-import com.wap.service.UserServiceImpl;
+import com.wap.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,17 +19,21 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@WebServlet("/DeleteTask")
-public class DeleteTaskController extends HttpServlet {
+@WebServlet("/AddTeam")
+public class AddTeamController extends HttpServlet {
 
-    private ITaskService taskService = new TaskServiceImpl();
+    private ITeamService teamService = new TeamServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Result result = taskService.deleteTask(id);
 
-        String responseJSON = new Gson().toJson(result);
+        String name = request.getParameter("name");
+
+        TeamDto teamDto = new TeamDto();
+        teamDto.setName(name);
+        teamService.addTeam(teamDto);
+
+        String responseJSON = new Gson().toJson(new Result().makeSuccess());
 
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
@@ -43,8 +45,6 @@ public class DeleteTaskController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
     }
-
 }
 

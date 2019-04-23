@@ -15,7 +15,7 @@
             </li>
 
             <li class="nav-item adminsPlace">
-                <a class="nav-link" href="addteam.jsp">Teams</a>
+                <a class="nav-link" href="teams.jsp">Teams</a>
             </li>
             <li class="nav-item adminsPlace">
                 <a class="nav-link" href="users.jsp">Users</a>

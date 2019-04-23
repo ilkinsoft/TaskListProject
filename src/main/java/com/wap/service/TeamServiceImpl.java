@@ -6,7 +6,9 @@ import com.wap.model.dto.TaskDto;
 import com.wap.model.dto.TeamDto;
 import com.wap.model.entity.Task;
 import com.wap.model.entity.Team;
+import com.wap.model.enums.ResultCode;
 import com.wap.model.result.Result;
+import com.wap.model.result.ResultData;
 
 import java.util.List;
 
@@ -21,8 +23,11 @@ public class TeamServiceImpl implements ITeamService {
 //    }
 
     @Override
-    public List<TeamDto> getTeams(){
-        return teamDao.getAll();
+    public ResultData<List<TeamDto>> getTeams(){
+        ResultData<List<TeamDto>> resultData = new ResultData<>();
+        resultData.setData(teamDao.getAll());
+        resultData.setResultCode(ResultCode.SUCCESS);
+        return resultData;
     }
 
     @Override
@@ -38,7 +43,7 @@ public class TeamServiceImpl implements ITeamService {
 
     @Override
     public Result updateTeam(TeamDto u) {
-        teamDao.save(u);
+        teamDao.update(u);
         return new Result().makeSuccess();
     }
 
