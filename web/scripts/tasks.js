@@ -1,17 +1,10 @@
 $(document).ready(function () {
 
     loadTasks();
-    loadUsersToDropdown();
 
     $('#btnAddTask').click(function () {
         $('#addForm').fadeIn();
     });
-
-    // $('.btnUpdateTask').click(function () {
-    //     alert()
-    //     $('.lblAssignedTo').hide();
-    //     $('.txtAssignedTo').show();
-    // });
 
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -115,6 +108,9 @@ function loadTasks() {
     $.get('Tasks')
         .done(function (data) {
             if (data.resultCode === 'SUCCESS') {
+
+                loadUsersToDropdown();  // when loadTasks() complete
+
                 $.each(data.data, function (key, value) {
                     console.log(this.createdAt.date.day)
                     const html =
