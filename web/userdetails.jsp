@@ -75,6 +75,7 @@
                         <br>
 
                         <input id="roleHelper" type="hidden" value="${param.role}">
+                        <input id="teamHelper" type="hidden" value="${param.team}">
                         <input id="isInEditMode" type="hidden" value="${param.isInEditMode}">
                         <input id="userID" type="hidden" value="${param.userID}">
 
@@ -84,6 +85,14 @@
                                 <option value="PROJECTMANAGER">Project manager</option>
                                 <option value="DEVELOPER">Developer</option>
                                 <option value="ADMIN">Admin</option>
+                            </select>
+                        </div>
+                        <br>
+
+
+                        <div class="form-label-group">
+                           Teams: <select  name="team"  id="team">
+
                             </select>
                         </div>
                         <br>

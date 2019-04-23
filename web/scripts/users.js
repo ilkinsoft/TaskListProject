@@ -16,11 +16,11 @@ $(document).ready(function () {
                         console.log(e);
                     }
 
-                    if (hour.length === 1) {
+                    if (hour<10) {
                         hour = "0" + hour;
                     }
 
-                    if (min.length === 1) {
+                    if (min<10) {
                         min = "0" + min;
                     }
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
                     $("#listofusers").append("<tr>\n" +
                         "                        <td>\n" +
                         "                            <img src='./img/profile_pic_place_holder.jpg' alt=''>\n" +
-                        "                            <a href='http://superhero.phoonio.com/users.html#' class='user-link'>" + value.firstName + " " + value.lastName + "</a>\n" +
+                        "                            <a href='#' id='"+value.id+"' class='user-link editUser'>" + value.firstName + " " + value.lastName + "</a>\n" +
                         "                            <span class='user-subhead'>" + value.role + "</span>\n" +
                         "                        </td>\n" +
                         "                        <td>\n" +
@@ -119,6 +119,7 @@ $(document).ready(function () {
                 $("#formPassword").val(data.data.password);
                 $("#formPhone").val(data.data.phone);
                 $("#formRole").val(data.data.role);
+                $("#formTeam").val(data.data.team.id);
 
 
 

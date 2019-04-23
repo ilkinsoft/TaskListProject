@@ -3,6 +3,8 @@ $(document).ready(function () {
 
 isInEditMode=$("#isInEditMode").val();
 
+loadTeamsToDropdown();
+
 
 
     $("#addUserForm").on('submit', function (event) {
@@ -36,6 +38,8 @@ isInEditMode=$("#isInEditMode").val();
     if ($("#roleHelper").val()!=="") {
         $("#role").val($("#roleHelper").val());
     }
+
+
 
     if (isInEditMode==="1") {
         $("#sendButton").text("Edit User");
@@ -73,6 +77,7 @@ function sendAddOrEditUserAsAjax() {
         email: $("#inputEmail").val(),
         password: $("#inputPassword").val(),
         phone: $("#inputPhone").val(),
+        team: $("#team").val(),
         role: $("#role").val()
 
 
@@ -89,4 +94,23 @@ function sendAddOrEditUserAsAjax() {
 
         })
 
+}
+
+function loadTeamsToDropdown() {
+
+    $.get('Teams')
+        .done(function (data) {
+            if (data.resultCode === 'SUCCESS') {
+                $.each(data.data, function (key, value) {
+                    let option = '<option value=' + this.id + '>' + this.name + '</option>';
+                    $('select#team').append(option);
+                });
+
+                if ($("#teamHelper").val()!=="") {
+                    $('select#team').val($("#teamHelper").val());
+                }
+            }
+        }).fail(function () {
+        alert("Fail. Try Again!")
+    });
 }
