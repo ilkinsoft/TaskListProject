@@ -20,6 +20,10 @@
             <li class="nav-item adminsPlace">
                 <a class="nav-link" href="users.jsp">Users</a>
             </li>
+
+            <li class="nav-item adminsPlace">
+                <a class="nav-link" href="LogOut">LogOut</a>
+            </li>
         </ul>
     </div>
 </nav>

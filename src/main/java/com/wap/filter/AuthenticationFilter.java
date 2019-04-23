@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/web/*")
+//@WebFilter(urlPatterns = {"/*,/tasks*,/teams*,/userdetails*,/users*"})
+@WebFilter(urlPatterns = {"/*"})
 public class AuthenticationFilter implements Filter {
     public void destroy() {
     }
@@ -24,7 +25,15 @@ public class AuthenticationFilter implements Filter {
         boolean loginRequest=false;
 
         String loginURI = request.getContextPath();
-        if(request.getRequestURI().equals(loginURI) || request.getRequestURI().equals(loginURI+"/") || request.getRequestURI().equals(loginURI+"/index.jsp")){
+        if(
+                request.getRequestURI().equals(loginURI)
+                || request.getRequestURI().equals(loginURI+"/")
+                || request.getRequestURI().equals(loginURI+"/index.jsp")
+                        || request.getRequestURI().equals(loginURI+"/scripts/index.js")
+
+                        || request.getRequestURI().equals(loginURI+"/LogIn")
+
+        ){
             loginRequest = true;
         }
 
@@ -36,6 +45,7 @@ public class AuthenticationFilter implements Filter {
             UserJwt userJwt = JwtUtil.validate(token);
             if(userJwt!=null){
                 tokenOK=true;
+                session.setAttribute("userJwt",userJwt);
 
             }
         }
@@ -44,7 +54,7 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(req, resp);
 
         }else {
-            //response.sendRedirect("../index.jsp");
+            response.sendRedirect("index.jsp");
 
         }
 

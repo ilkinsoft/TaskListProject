@@ -40,7 +40,7 @@ function sendAddOrEditUserAsAjax() {
         .done(function (data) {
             if(data.resultCode==="SUCCESS"){
 
-                //window.location.href = 'users.jsp';
+                window.location.href = 'users.jsp';
 
             }else if(data.resultCode==="NO_SUCH_USER"){
 

@@ -1,9 +1,12 @@
 package com.wap.security;
 
 
+import com.wap.model.enums.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import java.util.LinkedHashMap;
 
 public class JwtUtil {
 
@@ -19,7 +22,13 @@ public class JwtUtil {
                     .parseClaimsJws(token)
                     .getBody();
 
-            jwtUser =(UserJwt) body.get("data");
+            LinkedHashMap linkedHashMap = (LinkedHashMap) body.get("data");
+            jwtUser = new UserJwt();
+            jwtUser.setEmail(linkedHashMap.get("email").toString());
+            jwtUser.setRole(Role.valueOf(linkedHashMap.get("role").toString()));
+            jwtUser.setUserID((int)linkedHashMap.get("userID"));
+
+            //jwtUser =(UserJwt) body.get("data");
 
         } catch (Exception ex) {
             ex.printStackTrace();
