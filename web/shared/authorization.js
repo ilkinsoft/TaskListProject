@@ -33,7 +33,6 @@ function chechAuthorization() {
 
 
     } else if (role === "DEVELOPER") {
-        //todo sayfa gizlenecekse bile o sayfa ile ilgili butun kisitlamalari ekle buraya
         //cant see teams page
         //cant see users page
         //cant update/delete/add task

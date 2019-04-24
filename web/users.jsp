@@ -132,6 +132,7 @@
     <input type="hidden" id="formPhone" name="phone" value=""/>
     <input type="hidden" id="formRole" name="role" value="">
     <input type="hidden" id="formTeam" name="team" value=""/>
+    <input type="hidden" id="formLocation" name="location" value=""/>
     <input type="hidden" id="isInEditMode" name="isInEditMode" value="1"/>
 
 

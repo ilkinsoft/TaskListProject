@@ -117,6 +117,7 @@ function sendAddOrEditUserAsAjax() {
         userID:$("#userID").val(),
         firstName: $("#inputFirstName").val(),
         lastName: $("#inputLastName").val(),
+        location: $("#inputLocation").val(),
         email: $("#inputEmail").val(),
         password: $("#inputPassword").val(),
         phone: $("#inputPhone").val(),

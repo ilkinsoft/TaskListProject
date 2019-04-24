@@ -17,7 +17,7 @@ public class MyUtil {
 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        //String location = request.getParameter("location");
+        String location = request.getParameter("location");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         int teamId = Integer.parseInt(request.getParameter("team"));
@@ -31,6 +31,7 @@ public class MyUtil {
 
         userDto.setFirstName(firstName);
         userDto.setTeam(teamDto);
+        userDto.setLocation(location);
         userDto.setLastName(lastName);
         userDto.setEmail(email);
         userDto.setPhone(phone);

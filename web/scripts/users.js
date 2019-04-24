@@ -121,6 +121,8 @@ $(document).ready(function () {
                 $("#formEmail").val(data.data.email);
                 $("#formPassword").val(data.data.password);
                 $("#formPhone").val(data.data.phone);
+                $("#formLocation").val(data.data.location);
+
                 $("#formRole").val(data.data.role);
                 $("#formTeam").val(data.data.team.id);
 
