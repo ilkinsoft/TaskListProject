@@ -10,7 +10,11 @@ $(document).ready(function () {
 
 isInEditMode=$("#isInEditMode").val();
 
-
+    if(isInEditMode!=="1"){
+        $('#map').css('visibility', 'gone');
+        $('#map').hide();
+        $('#map').text('');
+    }
 
 
     $("#addUserForm").on('submit', function (event) {
@@ -105,6 +109,8 @@ function sendAddOrEditUserAsAjax() {
         url="EditUser";
     }else{
         url="AddUser";
+
+
     }
 
     $.post(url, {

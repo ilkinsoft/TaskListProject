@@ -8,6 +8,7 @@ import com.wap.model.entity.Userr;
 import com.wap.model.enums.Priority;
 import com.wap.model.result.Result;
 import com.wap.model.result.ResultData;
+import com.wap.security.UserJwt;
 import com.wap.service.ITaskService;
 import com.wap.service.IUserrService;
 import com.wap.service.TaskServiceImpl;
@@ -36,15 +37,18 @@ public class AddTaskController extends HttpServlet {
 
         String textOfTask = request.getParameter("textOfTask");
         int assignedTo = Integer.parseInt(request.getParameter("assignedTo"));
-        int createdBy = Integer.parseInt(request.getParameter("createdBy"));
+        //int createdBy = Integer.parseInt(request.getParameter("createdBy"));
         boolean isDone = Boolean.parseBoolean(request.getParameter("isDone"));
         LocalDateTime dueDate = LocalDateTime.parse(request.getParameter("dueDate"));
         Priority priority = Priority.valueOf(request.getParameter("priority"));
 
+
+        UserJwt userJwt = (UserJwt) request.getSession().getAttribute("userJwt");
+
         TaskDto taskDto = new TaskDto();
         taskDto.setTextOfTask(textOfTask);
         taskDto.setAssignedTo(userService.getUserById(assignedTo).getData());
-        taskDto.setCreatedBy(userService.getUserById(createdBy).getData());
+        taskDto.setCreatedBy(userService.getUserById(userJwt.getUserID()).getData());
         taskDto.setDone(isDone);
         taskDto.setDueDate(dueDate);
         taskDto.setPriority(priority);
