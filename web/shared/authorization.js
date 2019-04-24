@@ -26,6 +26,7 @@ function chechAuthorization() {
         $("#inputPassword").prop('disabled', true);
         $("#inputPassword2").prop('disabled', true);
         $("#inputPhone").prop('disabled', true);
+        $("#inputLocation").prop('disabled', true);
         $("#role").prop('disabled', true);
 
 
