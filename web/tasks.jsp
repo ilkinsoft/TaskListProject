@@ -38,7 +38,7 @@
         </div><!-- /.col-lg-3 -->
         <div class="col-lg-3">
             <div class="input-group">
-                <label class="form-control">User filter:</label>
+                <label class="form-control">Team filter:</label>
                 <select id="drpUser" class="form-control">
                     <option value="ALL">ALL</option>
                     <option value="MY_TEAM">MY TEAM</option>
@@ -64,6 +64,20 @@
                     <option value="NONE">NONE</option>
                     <option value="PRIORITY_ASC">PRIORITY ASC</option>
                     <option value="PRIORITY_DESC">PRIORITY DESC</option>
+                    <option value="DEADLINE_ASC">DEADLINE ASC</option>
+                    <option value="DEADLINE_DESC">DEADLINE DESC</option>
+                </select>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-3 -->
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-9"></div>
+
+        <div class="col-lg-3">
+            <div class="input-group">
+                <label class="form-control">User filter:</label>
+                <select id="drpAllUsers" class="form-control">
                 </select>
             </div><!-- /input-group -->
         </div><!-- /.col-lg-3 -->
@@ -87,13 +101,13 @@
                 </select>
             </div>
         </div>
-        <div class="form-row">
-            <div class="form-group col-sm-6">
-                <label for="createdBy">Created by</label>
-                <select class="form-control" id="createdBy" name="createdBy">
-                </select>
-            </div>
-        </div>
+        <%--<div class="form-row">--%>
+            <%--<div class="form-group col-sm-6">--%>
+                <%--<label for="createdBy">Created by</label>--%>
+                <%--<select class="form-control" id="createdBy" name="createdBy">--%>
+                <%--</select>--%>
+            <%--</div>--%>
+        <%--</div>--%>
         <div class="form-row">
             <div class="form-group col-sm-6">
                 <label for="isDone">Is Done</label>
@@ -159,10 +173,10 @@
                             <label for="assignedToEdit" class="col-form-label">Assigned to:</label>
                             <select class="form-control" id="assignedToEdit" name="assignedToEdit"></select>
                         </div>
-                        <div class="form-group">
-                            <label for="createdByEdit" class="col-form-label">Created by:</label>
-                            <select class="form-control" id="createdByEdit" name="createdByEdit"></select>
-                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<label for="createdByEdit" class="col-form-label">Created by:</label>--%>
+                            <%--<select class="form-control" id="createdByEdit" name="createdByEdit"></select>--%>
+                        <%--</div>--%>
                         <div class="form-group">
                             <label for="createdAtEdit" class="col-form-label">Created at:</label>
                             <input type="datetime-local" class="form-control" id="createdAtEdit" name="createdAtEdit">

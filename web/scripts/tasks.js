@@ -47,7 +47,7 @@ $(document).ready(function () {
 
         let selectedText = $("#drpUser option:selected").html();
 
-        if(selectedText == 'MINE'){
+        if (selectedText == 'MINE') {
             let userName = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
             let elements = $('.lblAssignedTo');
             $.each(elements, function (key, element) {
@@ -56,7 +56,7 @@ $(document).ready(function () {
                 }
             })
         }
-        if(selectedText == 'MY TEAM'){
+        if (selectedText == 'MY TEAM') {
             let teamName = localStorage.getItem('teamName');
             let elements = $('.lblTeamName');
             $.each(elements, function (key, element) {
@@ -65,9 +65,28 @@ $(document).ready(function () {
                 }
             })
         }
+    });
 
+    $('#drpAllUsers').on('change', function () {
+
+        let selectedValue = this.value;
+        if (selectedValue == 'ALL') {
+            $('.alert').show();
+            return;
+        }
+        $('.alert').hide();
+
+        let selectedUserName = $("#drpAllUsers option:selected").html();
+
+        let elements = $('.lblAssignedTo');
+        $.each(elements, function (key, element) {
+            if ($(element).text() == selectedUserName) {
+                $(element).parent().parent().show();
+            }
+        })
 
     });
+
 
     // IN-PAGE SORT CODE
     $('#drpOrder').on('change', function () {
@@ -78,6 +97,10 @@ $(document).ready(function () {
             loadTasks('priority', 'asc')
         else if (selectedValue == 'PRIORITY_DESC')
             loadTasks('priority', 'desc')
+        else if (selectedValue == 'DEADLINE_ASC')
+            loadTasks('dueDate', 'asc')
+        else if (selectedValue == 'DEADLINE_DESC')
+            loadTasks('dueDate', 'desc')
     });
 
 
@@ -143,15 +166,6 @@ $(document).ready(function () {
         let form = $(this);
         let url = form.attr('action');
 
-        // let task = {};
-        // task.textOfTask = $('#textOfTask').val();
-        // task.assignedTo = $('#assignedTo').val();
-        // task.createdBy = $('#createdBy').val();
-        // task.isDone = $('#isDone').val();
-        // task.dueDate = $('#dueDate').val();
-        // task.priority = $('#priority').val();
-        // console.log(JSON.stringify(task))
-
         $.post(url, {
             textOfTask: $('#textOfTask').val(),
             assignedTo: $('#assignedTo').val(),
@@ -163,6 +177,7 @@ $(document).ready(function () {
         }).done(function (data) {
             if (data.resultCode === "SUCCESS") {
                 alert("Task added.")
+                $("#addForm").trigger('reset');
                 $('#addForm').fadeOut();
                 loadTasks();
             } else {
@@ -206,6 +221,7 @@ function loadTasks(orderColumn, orderRule) {
     $.get('Tasks')
         .done(function (data) {
             if (data.resultCode === 'SUCCESS') {
+
 
                 loadUsersToDropdown();  // when loadTasks() complete
 
@@ -313,13 +329,21 @@ function loadTasks(orderColumn, orderRule) {
 
 function loadUsersToDropdown() {
 
+    $('select#assignedTo, select#createdBy, select#assignedToEdit, select#createdByEdit, select#drpAllUsers')
+        .find('option')
+        .remove()
+
     $.get('users')
         .done(function (data) {
             if (data.resultCode === 'SUCCESS') {
+                $('select#drpAllUsers').append('<option value="ALL">ALL</option>');
+
                 $.each(data.data, function (key, value) {
                     let option = '<option value=' + this.id + '>' + this.firstName + ' ' + this.lastName + '</option>';
                     $('select#assignedTo, select#createdBy').append(option);
                     $('select#assignedToEdit, select#createdByEdit').append(option);
+
+                    $('select#drpAllUsers').append(option);
                 });
             }
         }).fail(function () {
@@ -379,10 +403,23 @@ function sortJSON(data, key, rule) {
     return data.sort(function (a, b) {
         var x = convertPriority(a[key]);
         var y = convertPriority(b[key]);
-        if (rule == 'asc')
-            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-        else
-            return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+
+        if(key == 'dueDate'){
+
+            x = new Date(x.date.year, x.date.month - 1, x.date.day, x.time.hour, x.time.minute);
+            y = new Date(y.date.year, y.date.month - 1, y.date.day, y.time.hour, y.time.minute);
+
+            if (rule == 'asc')
+                return ((x.valueOf() < y.valueOf()) ? -1 : ((x.valueOf() > y.valueOf()) ? 1 : 0));
+            else
+                return ((x.valueOf() > y.valueOf()) ? -1 : ((x.valueOf() < y.valueOf()) ? 1 : 0));
+        }
+        else{
+            if (rule == 'asc')
+                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            else
+                return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+        }
     });
 }
 
@@ -393,4 +430,6 @@ function convertPriority(pName) {
         return 1;
     else if (pName == 'HIGH')
         return 2;
+
+    return pName;
 }
