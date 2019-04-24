@@ -31,12 +31,12 @@
     <%--</c:forEach>--%>
 
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="input-group">
                 <input id="txtSearch" type="text" class="form-control" placeholder="Search for task text...">
             </div><!-- /input-group -->
         </div><!-- /.col-lg-3 -->
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="input-group">
                 <label class="form-control">Team filter:</label>
                 <select id="drpUser" class="form-control">
@@ -46,7 +46,7 @@
                 </select>
             </div><!-- /input-group -->
         </div><!-- /.col-lg-3 -->
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="input-group">
                 <label class="form-control">Priority filter:</label>
                 <select id="drpPriority" class="form-control">
@@ -57,7 +57,19 @@
                 </select>
             </div><!-- /input-group -->
         </div><!-- /.col-lg-3 -->
-        <div class="col-lg-3">
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-4"></div>
+
+        <div class="col-lg-4">
+            <div class="input-group">
+                <label class="form-control">User filter:</label>
+                <select id="drpAllUsers" class="form-control">
+                </select>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-3 -->
+        <div class="col-lg-4">
             <div class="input-group">
                 <label class="form-control">Sort:</label>
                 <select id="drpOrder" class="form-control">
@@ -66,18 +78,6 @@
                     <option value="PRIORITY_DESC">PRIORITY DESC</option>
                     <option value="DEADLINE_ASC">DEADLINE ASC</option>
                     <option value="DEADLINE_DESC">DEADLINE DESC</option>
-                </select>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-3 -->
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-lg-9"></div>
-
-        <div class="col-lg-3">
-            <div class="input-group">
-                <label class="form-control">User filter:</label>
-                <select id="drpAllUsers" class="form-control">
                 </select>
             </div><!-- /input-group -->
         </div><!-- /.col-lg-3 -->
