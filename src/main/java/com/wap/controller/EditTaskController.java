@@ -37,14 +37,14 @@ public class EditTaskController extends HttpServlet {
         int assignedTo = Integer.parseInt(request.getParameter("assignedTo"));
         //int createdBy = Integer.parseInt(request.getParameter("createdBy"));
         boolean isDone = Boolean.parseBoolean(request.getParameter("isDone"));
-        LocalDateTime createdAt = LocalDateTime.parse(request.getParameter("createdAt"));
+//        LocalDateTime createdAt = LocalDateTime.parse(request.getParameter("createdAt"));
         LocalDateTime dueDate = LocalDateTime.parse(request.getParameter("dueDate"));
         Priority priority = Priority.valueOf(request.getParameter("priority"));
 
         TaskDto taskDto = taskService.getTaskById(id);
         taskDto.setTextOfTask(textOfTask);
         taskDto.setAssignedTo(userService.getUserById(assignedTo).getData());
-        taskDto.setCreatedAt(createdAt);
+//        taskDto.setCreatedAt(createdAt);
         //taskDto.setCreatedBy(userService.getUserById(createdBy).getData());
         taskDto.setDone(isDone);
         taskDto.setDueDate(dueDate);

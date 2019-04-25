@@ -177,10 +177,7 @@
                             <%--<label for="createdByEdit" class="col-form-label">Created by:</label>--%>
                             <%--<select class="form-control" id="createdByEdit" name="createdByEdit"></select>--%>
                         <%--</div>--%>
-                        <div class="form-group">
-                            <label for="createdAtEdit" class="col-form-label">Created at:</label>
-                            <input type="datetime-local" class="form-control" id="createdAtEdit" name="createdAtEdit">
-                        </div>
+
                         <div class="form-group">
                             <label for="dueDateEdit" class="col-form-label">Deadline:</label>
                             <input type="datetime-local" class="form-control" id="dueDateEdit" name="dueDateEdit">
